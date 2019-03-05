@@ -1,7 +1,5 @@
-class AudioUploader < CarrierWave::Uploader::Base
+class PhotoUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
-
-  # # lecture notes tell me to remove the below stuff, but should I?
 
   # # Include RMagick or MiniMagick support:
   # # include CarrierWave::RMagick
