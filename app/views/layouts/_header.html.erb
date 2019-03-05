@@ -1,0 +1,29 @@
+<div class="navbar-speakit_live">
+  <!-- Logo -->
+  <a href="/" class="navbar-speakit_live-brand">
+    <%= image_tag "speakitlive_logo.png", alt:"speakit_live_logo"%>
+  </a>
+
+  <!-- Right Navigation -->
+    <div class="navbar-speakit_live-right hidden-xs hidden-sm">
+
+    <% if teacher_signed_in? == false %>
+      <%= link_to "Teacher Log In", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
+    <% end %>
+    <%= link_to "Student Log In", new_student_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
+    <!-- Profile picture with dropdown list -->
+
+  </div>
+
+  <!-- Dropdown appearing on mobile only -->
+  <div class="navbar-speakit_live-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-speakit_live-dropdown-menu">
+        <li><a href="#">Log in</a></li>
+        <li><a href="#">Sign up</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
