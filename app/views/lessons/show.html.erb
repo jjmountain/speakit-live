@@ -1,0 +1,11 @@
+<div class="container"></container><h2>Lesson page for Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %></h2>
+  <p> Waiting for students to join... </p>
+
+  <% @attendances.each_with_index do | a, i | %>
+    <div class="row">
+    <%= i + 1 %>. <%= a.student.first_name %> <%= a.student.last_name %> has joined!
+  </div>
+  <% end %>
+
+
+</div>
