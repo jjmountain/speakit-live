@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_072017) do
+ActiveRecord::Schema.define(version: 2019_03_05_035157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.boolean "presence", default: true
+    t.boolean "late"
+    t.bigint "lesson_id"
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_attendances_on_lesson_id"
+    t.index ["student_id"], name: "index_attendances_on_student_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "learning_goal"
+    t.integer "time_goal"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.boolean "completed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "teacher_id"
+    t.index ["teacher_id"], name: "index_lessons_on_teacher_id"
+  end
+
+  create_table "mistakes", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "time_trial_id"
+    t.index ["time_trial_id"], name: "index_mistakes_on_time_trial_id"
+  end
 
   create_table "students", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,6 +54,12 @@ ActiveRecord::Schema.define(version: 2019_03_04_072017) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birth_date"
+    t.string "student_number"
+    t.integer "score"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
@@ -35,8 +72,28 @@ ActiveRecord::Schema.define(version: 2019_03_04_072017) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
   end
 
+  create_table "time_trials", force: :cascade do |t|
+    t.integer "seconds"
+    t.string "audio"
+    t.bigint "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "attendance_a_id"
+    t.bigint "attendance_b_id"
+    t.boolean "completed", default: false
+    t.index ["lesson_id"], name: "index_time_trials_on_lesson_id"
+  end
+
+  add_foreign_key "attendances", "lessons"
+  add_foreign_key "attendances", "students"
+  add_foreign_key "lessons", "teachers"
+  add_foreign_key "mistakes", "time_trials"
+  add_foreign_key "time_trials", "lessons"
 end
