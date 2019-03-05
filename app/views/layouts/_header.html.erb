@@ -10,7 +10,15 @@
     <% if teacher_signed_in? == false %>
       <%= link_to "Teacher Log In", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
     <% end %>
+    <% if teacher_signed_in? == true %>
+      <%= link_to "Teacher Log Out", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
+    <% end %>
+    <% if student_signed_in? == false %>
     <%= link_to "Student Log In", new_student_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
+    <% end %>
+    <% if teacher_signed_in? == true %>
+    <%= link_to "Student Log Out", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
+    <% end %>
     <!-- Profile picture with dropdown list -->
 
   </div>

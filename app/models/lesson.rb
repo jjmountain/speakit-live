@@ -1,5 +1,5 @@
 class Lesson < ApplicationRecord
-  belongs_to :teacher
+  belongs_to :teacher, optional: true
   has_many :attendances
   has_many :time_trials, through: :attendances
   validates :learning_goal, presence: true
