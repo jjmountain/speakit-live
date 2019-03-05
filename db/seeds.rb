@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Lesson.create! (
+  teacher: 'James Devereux';
+  student: 'Ryo Fujiwara';
+  student: 'Junki Ishida';
+  student: 'Yuki Mori';
+  student: 'Miyuki Hoshikawa';
+  attendance: true;
+  learning_goal: "Improving pronounciation";
+  mistakes: 'Pronounced a phrase wrong';
+  email: 'umedaplumfield@gmail.com';
+  )
