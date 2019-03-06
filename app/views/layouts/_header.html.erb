@@ -1,7 +1,7 @@
 <div class="navbar-speakit_live">
   <!-- Logo -->
   <a href="/" class="navbar-speakit_live-brand">
-    <%= image_tag "speakitlive_logo.png", alt:"speakit_live_logo"%>
+    <%= image_tag "speak_it_logo.png", alt:"speakit_live_logo"%>
   </a>
 
   <!-- Right Navigation -->
@@ -10,16 +10,16 @@
 
 
     <% if !student_signed_in? && !teacher_signed_in? %>
-        <%= link_to "Sign in as teacher", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
+        <%= link_to "Teacher Sign In", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
       <% end %>
     <% if !student_signed_in? && !teacher_signed_in? %>
-      <%= link_to "Sign in as student", new_student_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
+      <%= link_to "Student Sign In", new_student_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
     <% end %>
     <% if teacher_signed_in? %>
-      <%= link_to "Sign Out of teacher", destroy_teacher_session_path, method: :delete %>
+      <%= link_to "Teacher Sign Out", destroy_teacher_session_path, method: :delete %>
     <% end %>
     <% if student_signed_in? %>
-      <%= link_to "Sign Out of student", destroy_student_session_path, method: :delete %>
+      <%= link_to "Student Sign Out", destroy_student_session_path, method: :delete %>
     <% end %>
     <!-- Profile picture with dropdown list -->
 
