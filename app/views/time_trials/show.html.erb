@@ -8,8 +8,17 @@
     <div class="col-sm-3 col-sm-offset-1">
       <%= @time_trial.attendance_a.student.first_name %>
     </div>
-    <div class="col-sm-3">Vs</div>
+    <div id="chronoExample">
+      <div class="values">00:00:00</div>
+      <div class="progress_bar">.</div>
 
+      <div>
+        <button class="startButton">Start</button>
+        <button class="pauseButton" >Pause</button>
+        <button class="stopButton">Stop</button>
+        <button class="resetButton">Reset</button>
+      </div>
+    </div>
     <div class="col-sm-3">
       <%= @time_trial.attendance_b.student.first_name %>
     </div>
