@@ -20,6 +20,10 @@ teacher = Teacher.create!(
   password: "secret"
 )
 
+puts 'teacher created'
+
+puts 'creating 2 lessons'
+
 Lesson.create!(
   learning_goal: "Talk about pets",
   time_goal: 120,
@@ -40,13 +44,17 @@ Lesson.create!(
   teacher: Teacher.all.sample
 )
 
+puts '2 lesson created'
+
+puts 'creating 20 students'
+
 Student.create!(
   first_name: "Miyuki",
   last_name: "Suzuki",
   birth_date: Date.new,
   email: "miyuki@suzuki.com",
   password: "secret",
-  student_number: 1
+  student_number: "1"
 )
 
 Student.create!(
@@ -55,7 +63,7 @@ Student.create!(
   birth_date: Date.new,
   email: "mana@kuriya.com",
   password: "secret",
-  student_number: 2
+  student_number: "2"
 )
 
 
@@ -65,7 +73,7 @@ Student.create!(
   birth_date: Date.new,
   email: "shinichi@kurimoto.com",
   password: "secret",
-  student_number: 3
+  student_number: "3"
 )
 
 Student.create!(
@@ -74,7 +82,7 @@ Student.create!(
   birth_date: Date.new,
   email: "yuya@mano.com",
   password: "secret",
-  student_number: 4
+  student_number: "4"
 )
 
 Student.create!(
@@ -83,7 +91,7 @@ Student.create!(
   birth_date: Date.new,
   email: "genki@kojima.com",
   password: "secret",
-  student_number: 5
+  student_number: "5"
 )
 
 Student.create!(
@@ -92,7 +100,7 @@ Student.create!(
   birth_date: Date.new,
   email: "nanae@matsumura.com",
   password: "secret",
-  student_number: 6
+  student_number: "6"
 )
 
 Student.create!(
@@ -101,7 +109,7 @@ Student.create!(
   birth_date: Date.new,
   email: "mitsuyuki@ohara.com",
   password: "secret",
-  student_number: 7
+  student_number: "7"
 )
 
 Student.create!(
@@ -110,7 +118,7 @@ Student.create!(
   birth_date: Date.new,
   email: "arata@sugimoto.com",
   password: "secret",
-  student_number: 7
+  student_number: "8"
 )
 
 Student.create!(
@@ -119,7 +127,7 @@ Student.create!(
   birth_date: Date.new,
   email: "riona@kurumado.com",
   password: "secret",
-  student_number: 8
+  student_number: "9"
 )
 
 Student.create!(
@@ -128,7 +136,7 @@ Student.create!(
   birth_date: Date.new,
   email: "ayako@goto.com",
   password: "secret",
-  student_number: 9
+  student_number: "10"
 )
 
 Student.create!(
@@ -137,16 +145,7 @@ Student.create!(
   birth_date: Date.new,
   email: "yuka@baba.com",
   password: "secret",
-  student_number: 10
-)
-
-Student.create!(
-  first_name: "Chieko",
-  last_name: "Bando",
-  birth_date: Date.new,
-  email: "chieko@bando.com",
-  password: "secret",
-  student_number: 11
+  student_number: "11"
 )
 
 Student.create!(
@@ -155,7 +154,7 @@ Student.create!(
   birth_date: Date.new,
   email: "daisuke@yano.com",
   password: "secret",
-  student_number: 12
+  student_number: "12"
 )
 
 Student.create!(
@@ -164,7 +163,7 @@ Student.create!(
   birth_date: Date.new,
   email: "rie@yamaguchi.com",
   password: "secret",
-  student_number: 13
+  student_number: "13"
 )
 
 Student.create!(
@@ -173,7 +172,7 @@ Student.create!(
   birth_date: Date.new,
   email: "keita@yoshida.com",
   password: "secret",
-  student_number: 14
+  student_number: "14"
 )
 
 Student.create!(
@@ -182,7 +181,7 @@ Student.create!(
   birth_date: Date.new,
   email: "tomoe@Okino.com",
   password: "secret",
-  student_number: 15
+  student_number: "15"
 )
 
 Student.create!(
@@ -191,7 +190,7 @@ Student.create!(
   birth_date: Date.new,
   email: "shohei@kikutani.com",
   password: "secret",
-  student_number: 16
+  student_number: "16"
 )
 
 Student.create!(
@@ -200,7 +199,7 @@ Student.create!(
   birth_date: Date.new,
   email: "eiichi@ynambu.com",
   password: "secret",
-  student_number: 17
+  student_number: "17"
 )
 
 Student.create!(
@@ -209,7 +208,7 @@ Student.create!(
   birth_date: Date.new,
   email: "yoshihiko@yamamoto.com",
   password: "secret",
-  student_number: 18
+  student_number: "18"
 )
 
 Student.create!(
@@ -218,7 +217,7 @@ Student.create!(
   birth_date: Date.new,
   email: "hanako@nakagawa.com",
   password: "secret",
-  student_number: 19
+  student_number: "19"
 )
 
 Student.create!(
@@ -227,129 +226,26 @@ Student.create!(
   birth_date: Date.new,
   email: "toshiyuki@asano.com",
   password: "secret",
-  student_number: 20
+  student_number: "20"
 )
 
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
+puts '20 students created'
 
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
-
-Attendance.create!(
-  student: Student.all.sample,
-  lesson: Lesson.all.sample,
-  presence: true
-)
+puts 'creating 20 attendances'
 
 
+Student.find_each do |student|
+  attendance = Attendance.create!(
+  student: student,
+  lesson: Lesson.first)
+  p attendance
+end
 
+Student.find_each do |student|
+  attendance = Attendance.create!(
+  student: student,
+  lesson: Lesson.last)
+  p attendance
+end
 
+# puts '20 attendances created'

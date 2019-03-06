@@ -7,17 +7,19 @@
   <!-- Right Navigation -->
     <div class="navbar-speakit_live-right hidden-xs hidden-sm">
 
-    <% if teacher_signed_in? == false %>
-      <%= link_to "Teacher Log In", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
+
+
+    <% if !student_signed_in? && !teacher_signed_in? %>
+        <%= link_to "Sign in as teacher", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
+      <% end %>
+    <% if !student_signed_in? && !teacher_signed_in? %>
+      <%= link_to "Sign in as student", new_student_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
     <% end %>
-    <% if teacher_signed_in? == true %>
-      <%= link_to "Teacher Log Out", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
+    <% if teacher_signed_in? %>
+      <%= link_to "Sign Out of teacher", destroy_teacher_session_path, method: :delete %>
     <% end %>
-    <% if student_signed_in? == false %>
-    <%= link_to "Student Log In", new_student_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
-    <% end %>
-    <% if teacher_signed_in? == true %>
-    <%= link_to "Student Log Out", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
+    <% if student_signed_in? %>
+      <%= link_to "Sign Out of student", destroy_student_session_path, method: :delete %>
     <% end %>
     <!-- Profile picture with dropdown list -->
 
