@@ -1,0 +1,30 @@
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-1">
+      <h3>Ready to start first time trial</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 col-sm-offset-1">
+      <%= @time_trial.attendance_a.student.first_name %>
+    </div>
+    <div id="chronoExample">
+      <div class="values">00:00:00</div>
+      <div class="progress_bar">.</div>
+      <div>
+        <button class="startButton">Start</button>
+        <button class="pauseButton" >Pause</button>
+        <button class="stopButton">Stop</button>
+        <button class="resetButton">Reset</button>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <%= @time_trial.attendance_b.student.first_name %>
+    </div>
+  </div>
+
+</div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-3">
+    <%= link_to "Next trial", new_lesson_path, class: "btn btn-primary" %>
+    </div>
+  </div>
