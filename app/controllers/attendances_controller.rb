@@ -23,10 +23,13 @@ class AttendancesController < ApplicationController
 
   def unattend
     @attendance = Attendance.find(params[:id])
-    @attendance.presence = false
+    @attendance.present = false
     @lesson = @attendance.lesson
-    redirect_to lesson_path(@lesson)
-    raise
+    if @attendance.save!
+      redirect_to lesson_path(@lesson)
+    else
+      raise
+    end
   end
 
 end
