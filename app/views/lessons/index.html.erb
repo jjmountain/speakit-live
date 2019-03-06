@@ -1,19 +1,62 @@
-
-<div class="banner">
-<div class="row">
-<h2>the complete solution for teaching communication skills</h2>
-<p><%= image_tag 'check.png'%> Teach real communication skills through spontaneous conversations</p>
-<p><%= image_tag 'check.png'%> Capture audio of student conversations for reflective learning</p>
-<p><%= image_tag 'check.png'%> Automatic grade calculations</p>
-<h3><%= image_tag 'arrow.png'%> sign up to get started today</h3>
-</div>
-</div>
 <div class="container">
-<h2>How It Works</h2>
-<p>Speakit choose two students at random to talk in front of the class</p>
-<p>They start talking about the class topic and try to keep talking for 1-2 minute</p>
-<p>The teacher listens and stops students when they make a mistake, giving them 10 seconds to repair it</p>
-<p>Students get chances to fix their mistakes but if they can't the conversation ends and another pair is chosen to speak</p>
-<p>Conversations are recorded using student's smartphones to review for homework</p>
-<br>
+
+  <% if !teacher_signed_in? %>
+    <%= link_to "Sign in as teacher", new_teacher_session_path %>
+  <% end %>
+
+  <% if !student_signed_in? %>
+    <%= link_to "Sign in as student", new_student_session_path %>
+  <% end %>
+
+  <% if student_signed_in? %>
+    <%= link_to "Sign Out of student", destroy_student_session_path, method: :delete %>
+  <% end %>
+
+  <% if teacher_signed_in? %>
+    <%= link_to "Sign Out of teacher", destroy_teacher_session_path, method: :delete %>
+  <% end %>
+
+  <h1> Lessons Index </h1>
+  <div class="row">
+    <div class="col-sm-2">
+      Lesson Number
+    </div>
+    <div class="col-sm-2">
+      Date
+    </div>
+    <div class="col-sm-4">
+      Learning Goal
+    </div>
+    <div class="col-sm-2">
+      Complete?
+    </div>
+  </div>
+    <% @lessons.each_with_index do | l, i | %>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= i %>
+      </div>
+      <div class="col-sm-2">
+        <%= l.start_time.strftime('%A, %b %d') %>
+      </div>
+      <div class="col-sm-4">
+        <%= l.learning_goal %>
+      </div>
+      <div class="col-sm-2">
+        <%= l.completed %>
+      </div>
+      <div class="col-sm-2">
+        <% if student_signed_in? && l.completed == false%>
+          <%= link_to "Join lesson", lesson_attendances_path(l.id), method: :post %>
+        <% elsif current_teacher && l.completed == false %>
+          <%= link_to "Continue lesson", lesson_path(l.id) %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <% if teacher_signed_in? %>
+  <div class="row">
+    <%= link_to "Create Lesson", new_lesson_path, class: "btn btn-primary" %>
+  </div>
+  <% end %>
 </div>
