@@ -1,11 +1,27 @@
 <div class="container"></container><h2>Lesson page for Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %></h2>
-  <p> Waiting for students to join... </p>
 
-  <% @attendances.each_with_index do | a, i | %>
-    <div class="row">
-    <%= i + 1 %>. <%= a.student.first_name %> <%= a.student.last_name %> has joined!
+  <% if teacher_signed_in? %>
+  <ol>
+    <% @attendances.each do | a | %>
+      <%# Only display students who have presence marked as true %>
+      <% if a.presence %>
+      <div class="row">
+        <div class="col-sm-4">
+            <li><% a.student.first_name %> <%= a.student.last_name %> is present </li>
+        </div>
+        <div class="col-sm-4">
+          <%= link_to "Remove Student", unattend_attendance_path(a), method: :post %>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </ol>
+  <div class="row">
+    <div class="col-sm-4">
+    <%= link_to "Start lesson with #{@attendances.count} students", lesson_time_trials_path(@lesson), method: :post %>
+    </div>
   </div>
+  <% elsif student_signed_in? %>
+    <%= render "student_show" %>
   <% end %>
-
-
 </div>

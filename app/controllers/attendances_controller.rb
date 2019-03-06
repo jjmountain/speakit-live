@@ -4,6 +4,29 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.new
     @attendance.lesson = Lesson.find(params[:lesson_id])
     @attendance.student = current_student
-    @attendance.save!
+    if @attendance.save!
+      redirect_to lesson_path(@attendance.lesson_id)
+    else
+      raise
+    end
   end
+
+  def destroy
+    @attendance = Attendance.find(params[:id])
+    @lesson = @attendance.lesson
+    if @attendance.destroy!
+      redirect_to lesson_path(@lesson)
+    else
+      raise
+    end
+  end
+
+  def unattend
+    @attendance = Attendance.find(params[:id])
+    @attendance.presence = false
+    @lesson = @attendance.lesson
+    redirect_to lesson_path(@lesson)
+    raise
+  end
+
 end

@@ -8,5 +8,10 @@ Rails.application.routes.draw do
     resources :time_trials, only: [ :create, :show, :update ]
   end
   resources :time_trials, only: [ :index ]
-  resources :attendances, only: [ :destroy ]
+
+  resources :attendances, only: [ :destroy ] do
+    member do
+      post 'unattend'
+    end
+  end
 end
