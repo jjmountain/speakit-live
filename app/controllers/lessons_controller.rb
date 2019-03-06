@@ -7,6 +7,7 @@ class LessonsController < ApplicationController
   def show
     @lesson = Lesson.find(params[:id])
     @attendances = Attendance.where(lesson_id: @lesson.id)
+    @time_trials = TimeTrial.where(lesson_id: @lesson.id)
   end
 
   def new
