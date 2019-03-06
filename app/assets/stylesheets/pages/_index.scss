@@ -1,17 +1,3 @@
 // Import page-specific CSS files here.
 @import "home";
 
-.banner {
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url('landingpage.png');
-    color: white;
-    text-align: center;
-    height: 100vh;
-    /* if you have a 70px navbar => height: calc(100vh - 70px); */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
