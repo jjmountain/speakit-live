@@ -21,4 +21,17 @@ class TimeTrialsController < ApplicationController
     @time_trial = TimeTrial.find(params[:id])
   end
 
+  def update
+    # binding.pry
+    @time_trial = TimeTrial.find(params[:id])
+    @time_trial.update(time_trial_params)
+    redirect_to lesson_path(@time_trial.lesson)
+  end
+
+  private
+
+  def time_trial_params
+    params.require(:time_trial).permit(:audio, :seconds)
+  end
+
 end
