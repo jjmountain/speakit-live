@@ -1,4 +1,5 @@
 <div class="container"></container><h2>Lesson page for Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %></h2>
+  <p> Waiting for students to join... </p>
 
   <% if teacher_signed_in? %>
   <ol>
@@ -23,7 +24,6 @@
     <%= link_to "Start lesson", lesson_time_trials_path(@lesson), method: :post %>
     </div>
   </div>
-  <% elsif student_signed_in? %>
-    <%= render "student_show" %>
   <% end %>
+
 </div>

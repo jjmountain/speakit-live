@@ -9,7 +9,7 @@ var timer = new Timer();
 
 document.querySelector('.startButton').addEventListener('click', function () {
     // console.log('start!')
-  timer.start({precision: 'seconds', target: {seconds: 5}});
+    timer.start({ precision: 'secondTenths', target: { seconds: 60 } });
 });
 
 $('#chronoExample .pauseButton').click(function () {
@@ -21,8 +21,8 @@ $('#chronoExample .stopButton').click(function () {
 $('#chronoExample .resetButton').click(function () {
     timer.reset();
 });
-timer.addEventListener('secondsUpdated', function (e) {
-    $('#chronoExample .values').html(timer.getTimeValues().toString());
+timer.addEventListener('secondTenthsUpdated', function (e) {
+    $('#chronoExample .values').html(timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']));
 });
 timer.addEventListener('started', function (e) {
     $('#chronoExample .values').html(timer.getTimeValues().toString());
