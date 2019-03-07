@@ -18,11 +18,17 @@
     <% if flash[:alert] %>
       <p class="alert"><%= alert %></p>
     <% end %>
+   <!--  <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
 
+    <%= render "layouts/header" %>
+    <%= render "shared/flashes"  %>
     <%=yield %>
     <%= render "layouts/footer" %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= javascript_pack_tag 'timer' %>
+    <%= javascript_pack_tag 'recorder' %>
+
   </body>
 </html>

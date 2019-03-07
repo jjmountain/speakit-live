@@ -1,3 +1,10 @@
+image_data1 = File.read('app/assets/images/Student_1.jpg')
+image_data2 = File.read('app/assets/images/Student_2.jpg')
+image_data3 = File.read('app/assets/images/Student_3.jpg')
+image_data4 = File.read('app/assets/images/Student_4.jpg')
+image_data5 = File.read('app/assets/images/Student_5.jpg')
+image_data6 = File.read('app/assets/images/Student_6.jpg')
+image_data7 = File.read('app/assets/images/Student_7.jpg')
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -54,7 +61,8 @@ Student.create!(
   birth_date: Date.new,
   email: "miyuki@suzuki.com",
   password: "secret",
-  student_number: "1"
+  student_number: "1",
+  photo: "image_data1"
 )
 
 Student.create!(
@@ -63,7 +71,8 @@ Student.create!(
   birth_date: Date.new,
   email: "mana@kuriya.com",
   password: "secret",
-  student_number: "2"
+  student_number: "2",
+  photo: "image_data2"
 )
 
 
@@ -73,7 +82,8 @@ Student.create!(
   birth_date: Date.new,
   email: "shinichi@kurimoto.com",
   password: "secret",
-  student_number: "3"
+  student_number: "3",
+  photo: "image_data3"
 )
 
 Student.create!(
@@ -82,7 +92,8 @@ Student.create!(
   birth_date: Date.new,
   email: "yuya@mano.com",
   password: "secret",
-  student_number: "4"
+  student_number: "4",
+  photo: "image_data4"
 )
 
 Student.create!(
@@ -91,7 +102,8 @@ Student.create!(
   birth_date: Date.new,
   email: "genki@kojima.com",
   password: "secret",
-  student_number: "5"
+  student_number: "5",
+  photo: "image_data5"
 )
 
 Student.create!(
@@ -100,7 +112,8 @@ Student.create!(
   birth_date: Date.new,
   email: "nanae@matsumura.com",
   password: "secret",
-  student_number: "6"
+  student_number: "6",
+  photo: "image_data6"
 )
 
 Student.create!(
@@ -109,7 +122,8 @@ Student.create!(
   birth_date: Date.new,
   email: "mitsuyuki@ohara.com",
   password: "secret",
-  student_number: "7"
+  student_number: "7",
+  photo: "image_data7"
 )
 
 Student.create!(
