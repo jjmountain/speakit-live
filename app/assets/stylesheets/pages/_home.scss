@@ -3,29 +3,31 @@
 .banner {
     background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url('landing_page.jpg');
     color: white;
-    text-align: center;
-    height: 100vh;
+    height:75vh;
     /* if you have a 70px navbar => height: calc(100vh - 70px); */
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    // background-attachment: fixed;
     background-position: center;
     display: flex;
     align-items: center;
-    justify-content: center;
-    p, h3 {
-      text-align:justify;
-    }
-
-    h3 {
-      padding-left: 10px;
+    justify-content: left;
+    padding-left: 40px;
+    h2 {
       font-style:italic;
+    }
+    p {
+      padding-left:10px;
+    }
+    h3 {
+      padding-left:30px;
+      font-style: italic;
     }
   }
 
-.container {
-  h2 {
-    text-align:center;
-    font-weight:bold;
+.land_card {
+  margin: 10px 0;
+  p {
+    margin-top:5px;
   }
 }
