@@ -6,12 +6,14 @@
       <%# Only display students who have presence marked as true %>
       <% if a.present == true %>
       <div class="row">
+
         <div class="col-sm-4">
             <li><%= a.student.first_name %> <%= a.student.last_name %> is present </li>
         </div>
         <div class="col-sm-4">
           <%= link_to "Remove Student", unattend_attendance_path(a[:id]), method: :post %>
         </div>
+
       </div>
       <% end %>
     <% end %>

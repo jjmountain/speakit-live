@@ -1,7 +1,7 @@
 <div class="container">
 <div class="row">
   <div class="col-sm-4 col-sm-offset-4">
-
+<div class="signin">
 <h2>Log in</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -20,7 +20,7 @@
     <%= f.button :submit, "Log in" %>
   </div>
 <% end %>
-
+</div>
 <%= render "devise/shared/links" %>
 </div>
 </div>
