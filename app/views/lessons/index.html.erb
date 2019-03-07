@@ -1,21 +1,4 @@
 <div class="container">
-
-  <% if !teacher_signed_in? %>
-    <%= link_to "Sign in as teacher", new_teacher_session_path %>
-  <% end %>
-
-  <% if !student_signed_in? %>
-    <%= link_to "Sign in as student", new_student_session_path %>
-  <% end %>
-
-  <% if student_signed_in? %>
-    <%= link_to "Sign Out of student", destroy_student_session_path, method: :delete %>
-  <% end %>
-
-  <% if teacher_signed_in? %>
-    <%= link_to "Sign Out of teacher", destroy_teacher_session_path, method: :delete %>
-  <% end %>
-
   <h1> Lessons Index </h1>
   <div class="row">
     <div class="col-sm-2">

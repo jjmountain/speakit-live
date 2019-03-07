@@ -4,6 +4,8 @@ class TimeTrialsController < ApplicationController
     @time_trial = TimeTrial.new(lesson_id: params[:lesson_id])
     @attendances = Lesson.find(params[:lesson_id]).attendances
 
+    @attendances.shuffle
+
     @attendance_a = @attendances.first
     @attendance_b = @attendances.last
 
