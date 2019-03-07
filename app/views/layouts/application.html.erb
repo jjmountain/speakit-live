@@ -12,13 +12,15 @@
   </head>
   <body>
     <%= render "layouts/header" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+   <!--  <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
 
     <%=yield %>
     <%= render "layouts/footer" %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= javascript_pack_tag 'timer' %>
+    <%= javascript_pack_tag 'recorder' %>
+
   </body>
 </html>
