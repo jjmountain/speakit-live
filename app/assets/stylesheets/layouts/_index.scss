@@ -5,3 +5,32 @@
 // @import "map";
 
 
+.container {
+  min-height: 100vh;
+    position: relative;
+    padding-bottom: 90px;
+    box-sizing: border-box;
+}
+
+.schedule {
+  background-color:#faf8f9;
+  h4 {
+    text-decoration: underline;
+    font-size:1.0em;
+    font-weight:bold;
+  }
+}
+
+.schedule_details {
+  background-color:#faf8f9;
+  padding-bottom:10px;
+  font-size: 0.9em;
+}
+
+.btn-primary {
+  background:#3B686E;
+  margin-top: 20px;
+}
+
+
+
