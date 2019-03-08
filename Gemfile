@@ -21,7 +21,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'carrierwave-audio'
 
-
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

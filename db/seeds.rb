@@ -69,7 +69,7 @@ Student.create!(
   email: "miyuki@suzuki.com",
   password: "secret",
   student_number: "1",
-  photo: "image_data1"
+  photo: File.open("./app/assets/images/Student_1.jpg")
 )
 
 Student.create!(
@@ -79,7 +79,7 @@ Student.create!(
   email: "mana@kuriya.com",
   password: "secret",
   student_number: "2",
-  photo: "image_data2"
+  photo: File.open("./app/assets/images/Student_2.jpg")
 )
 
 
@@ -90,7 +90,7 @@ Student.create!(
   email: "shinichi@kurimoto.com",
   password: "secret",
   student_number: "3",
-  photo: "image_data3"
+  photo: File.open("./app/assets/images/Student_3.jpg")
 )
 
 Student.create!(
@@ -100,7 +100,7 @@ Student.create!(
   email: "yuya@mano.com",
   password: "secret",
   student_number: "4",
-  photo: "image_data4"
+  photo: File.open("./app/assets/images/Student_4.jpg")
 )
 
 Student.create!(
@@ -110,7 +110,7 @@ Student.create!(
   email: "genki@kojima.com",
   password: "secret",
   student_number: "5",
-  photo: "image_data5"
+  photo: File.open("./app/assets/images/Student_5.jpg")
 )
 
 Student.create!(
@@ -120,7 +120,7 @@ Student.create!(
   email: "nanae@matsumura.com",
   password: "secret",
   student_number: "6",
-  photo: "image_data6"
+  photo: File.open("./app/assets/images/Student_6.jpg")
 )
 
 Student.create!(
@@ -130,7 +130,7 @@ Student.create!(
   email: "mitsuyuki@ohara.com",
   password: "secret",
   student_number: "7",
-  photo: "image_data7"
+  photo: File.open("./app/assets/images/Student_7.jpg")
 )
 
 Student.create!(
@@ -139,7 +139,8 @@ Student.create!(
   birth_date: Date.new,
   email: "arata@sugimoto.com",
   password: "secret",
-  student_number: "8"
+  student_number: "8",
+  photo: File.open("./app/assets/images/Student_7.jpg")
 )
 
 Student.create!(
@@ -148,7 +149,8 @@ Student.create!(
   birth_date: Date.new,
   email: "riona@kurumado.com",
   password: "secret",
-  student_number: "9"
+  student_number: "9",
+  photo: File.open("./app/assets/images/Student_7.jpg")
 )
 
 Student.create!(
@@ -157,7 +159,8 @@ Student.create!(
   birth_date: Date.new,
   email: "ayako@goto.com",
   password: "secret",
-  student_number: "10"
+  student_number: "10",
+  photo: File.open("./app/assets/images/Student_7.jpg")
 )
 
 Student.create!(
@@ -166,7 +169,8 @@ Student.create!(
   birth_date: Date.new,
   email: "yuka@baba.com",
   password: "secret",
-  student_number: "11"
+  student_number: "11",
+  photo: File.open("./app/assets/images/Student_7.jpg")
 )
 
 Student.create!(
@@ -175,7 +179,8 @@ Student.create!(
   birth_date: Date.new,
   email: "daisuke@yano.com",
   password: "secret",
-  student_number: "12"
+  student_number: "12",
+  photo: File.open("./app/assets/images/Student_6.jpg")
 )
 
 Student.create!(
@@ -184,7 +189,8 @@ Student.create!(
   birth_date: Date.new,
   email: "rie@yamaguchi.com",
   password: "secret",
-  student_number: "13"
+  student_number: "13",
+  photo: File.open("./app/assets/images/Student_6.jpg")
 )
 
 Student.create!(
@@ -193,7 +199,8 @@ Student.create!(
   birth_date: Date.new,
   email: "keita@yoshida.com",
   password: "secret",
-  student_number: "14"
+  student_number: "14",
+  photo: File.open("./app/assets/images/Student_5.jpg")
 )
 
 Student.create!(
@@ -202,7 +209,8 @@ Student.create!(
   birth_date: Date.new,
   email: "tomoe@Okino.com",
   password: "secret",
-  student_number: "15"
+  student_number: "15",
+  photo: File.open("./app/assets/images/Student_4.jpg")
 )
 
 Student.create!(
@@ -211,7 +219,8 @@ Student.create!(
   birth_date: Date.new,
   email: "shohei@kikutani.com",
   password: "secret",
-  student_number: "16"
+  student_number: "16",
+  photo: File.open("./app/assets/images/Student_3.jpg")
 )
 
 Student.create!(
@@ -220,7 +229,8 @@ Student.create!(
   birth_date: Date.new,
   email: "eiichi@ynambu.com",
   password: "secret",
-  student_number: "17"
+  student_number: "17",
+  photo: File.open("./app/assets/images/Student_2.jpg")
 )
 
 Student.create!(
@@ -229,7 +239,8 @@ Student.create!(
   birth_date: Date.new,
   email: "yoshihiko@yamamoto.com",
   password: "secret",
-  student_number: "18"
+  student_number: "18",
+  photo: File.open("./app/assets/images/Student_2.jpg")
 )
 
 Student.create!(
@@ -238,7 +249,8 @@ Student.create!(
   birth_date: Date.new,
   email: "hanako@nakagawa.com",
   password: "secret",
-  student_number: "19"
+  student_number: "19",
+  photo: File.open("./app/assets/images/Student_4.jpg")
 )
 
 Student.create!(
@@ -247,7 +259,8 @@ Student.create!(
   birth_date: Date.new,
   email: "toshiyuki@asano.com",
   password: "secret",
-  student_number: "20"
+  student_number: "20",
+  photo: File.open("./app/assets/images/Student_7.jpg")
 )
 
 puts '20 students created'
