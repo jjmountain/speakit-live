@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_022317) do
+ActiveRecord::Schema.define(version: 2019_03_08_073203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_022317) do
   create_table "lessons", force: :cascade do |t|
     t.string "learning_goal"
     t.integer "time_goal"
-    t.datetime "start_time"
+    t.datetime "start_time", default: "2019-03-08 07:33:50"
     t.datetime "end_time"
     t.boolean "completed", default: false
     t.datetime "created_at", null: false
