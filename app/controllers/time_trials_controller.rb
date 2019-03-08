@@ -21,19 +21,25 @@ class TimeTrialsController < ApplicationController
 
   def show
     @time_trial = TimeTrial.find(params[:id])
+
   end
 
   def update
     # binding.pry
     @time_trial = TimeTrial.find(params[:id])
+    @time_trial.completed = true if @time_trial.audio && @time_trial.seconds)
     @time_trial.update(time_trial_params)
     redirect_to lesson_path(@time_trial.lesson)
+  end
+
+  def completed?(time_trial)
+
   end
 
   private
 
   def time_trial_params
-    params.require(:time_trial).permit(:audio, :seconds)
+    params.require(:time_trial).permit(:audio, :seconds, :completed)
   end
 
 end

@@ -12,8 +12,12 @@
     box-sizing: border-box;
 }
 
+.wrapper {
+  margin-top: 4em;
+}
+
 .schedule {
-  background-color:#faf8f9;
+  background-color:$light-yellow;
   h4 {
     text-decoration: underline;
     font-size:1.0em;
@@ -22,7 +26,7 @@
 }
 
 .schedule_details {
-  background-color:#faf8f9;
+  background-color: $light-yellow;
   padding-bottom:10px;
   font-size: 0.9em;
 }
