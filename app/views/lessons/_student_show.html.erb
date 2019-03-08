@@ -1,24 +1,32 @@
-<% if @time_trials %>
-<div class="row">
-  <div class="col-sm-12">
-    <h4>Time Trials for <%= current_student.first_name %> <%= current_student.last_name %></h4>
+  <div class="row" style="margin-bottom: 1em;">
+    <div class="col-sm-4">
+      <h4>Conversations for <%= current_student.first_name %> <%= current_student.last_name %></h4>
+    </div>
   </div>
-</div>
+  <ol>
+  <% if @time_trials %>
     <% @time_trials.each do | t | %>
-    <div class="row">
-      <div class="col-sm-4">
-        <ol>
+      <div class="row">
+        <div class="col-sm-4">
           <li>
             <%= t.attendance_a.student.first_name %> <%= t.attendance_a.student.last_name %> and <%= t.attendance_b.student.first_name %> <%= t.attendance_b.student.last_name %>
           </li>
-        </ol>
+        </div>
+        <div class="col-sm-2">
+          <%= link_to "Join this trial", lesson_time_trial_path(@lesson, t) %>
+        </div>
+        <% if t.audio %>
+          <div class="col-sm-4" style="padding-bottom: 1em;">
+            <%= audio_tag t.audio, controls: true %>
+          </div>
+        <% end %>
       </div>
-      <div class="col-sm-4">
-        <%= link_to "Join this trial", lesson_time_trial_path(@lesson, t) %>
-      </div>
-    </div>
     <% end %>
+  </ol>
+  <% else %>
+  <div class="row">
+    <div class="col-sm-4">
+      You have no time trials yet.
+    </div>
   </div>
-<% else %>
-  <h2><%= current_student.first_name %> <%= current_student.last_name %> you have no time trials. Refresh your browser to check if you have any new ones. </h2>
-<% end %>
+  <% end %>

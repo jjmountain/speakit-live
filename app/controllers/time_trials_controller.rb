@@ -21,6 +21,7 @@ class TimeTrialsController < ApplicationController
 
   def show
     @time_trial = TimeTrial.find(params[:id])
+
   end
 
   def update

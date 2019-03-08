@@ -7,6 +7,8 @@ import Timer from 'easytimer.js';
 
 var timer = new Timer();
 
+const timerForm = document.querySelector('#time-trial-seconds')
+
 document.querySelector('.startButton').addEventListener('click', function () {
     // console.log('start!')
     timer.start({ precision: 'secondTenths', target: { seconds: 60 } });
@@ -22,7 +24,11 @@ $('#chronoExample .resetButton').click(function () {
     timer.reset();
 });
 timer.addEventListener('secondTenthsUpdated', function (e) {
-    $('#chronoExample .values').html(timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']));
+  // 1. get the seconds input (by id?)
+  document.querySelector('.values')
+  // 2. set the seconds input value to current seconds ellapsed
+  $('#chronoExample .values').html(timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']));
+  timerForm.querySelector('#time_trial_seconds').value = timer.getTotalTimeValues().seconds
 });
 timer.addEventListener('started', function (e) {
     $('#chronoExample .values').html(timer.getTimeValues().toString());
