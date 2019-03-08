@@ -12,6 +12,7 @@ image_data7 = File.read('app/assets/images/Student_7.jpg')
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 puts 'destroying time trials'
 TimeTrial.destroy_all
 puts 'destroying lessons'
@@ -258,14 +259,20 @@ Student.find_each do |student|
   attendance = Attendance.create!(
   student: student,
   lesson: Lesson.first)
-  p attendance
 end
 
 Student.find_each do |student|
   attendance = Attendance.create!(
   student: student,
   lesson: Lesson.last)
-  p attendance
 end
 
+Student.create!(
+  first_name: "Keisuke",
+  last_name: "Suzuki",
+  birth_date: Date.new,
+  email: "keisuke@suzuki.com",
+  password: "secret",
+  student_number: "21"
+)
 # puts '20 attendances created'
