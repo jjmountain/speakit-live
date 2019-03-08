@@ -13,7 +13,8 @@
           </li>
         </div>
         <div class="col-sm-2">
-          <%= link_to "Join this trial", lesson_time_trial_path(@lesson, t) %>
+
+          <%= link_to "Join this trial", lesson_time_trial_path(@lesson, t) if t.completed == false %>
         </div>
         <% if t.audio %>
           <div class="col-sm-4" style="padding-bottom: 1em;">
