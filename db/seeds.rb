@@ -24,6 +24,7 @@ Teacher.destroy_all
 puts 'destroying students'
 Student.destroy_all
 
+
 puts 'creating teacher'
 
 teacher = Teacher.create!(
@@ -271,14 +272,20 @@ Student.find_each do |student|
   attendance = Attendance.create!(
   student: student,
   lesson: Lesson.first)
-  p attendance
 end
 
 Student.find_each do |student|
   attendance = Attendance.create!(
   student: student,
   lesson: Lesson.last)
-  p attendance
 end
 
+Student.create!(
+  first_name: "Keisuke",
+  last_name: "Suzuki",
+  birth_date: Date.new,
+  email: "keisuke@suzuki.com",
+  password: "secret",
+  student_number: "21"
+)
 # puts '20 attendances created'

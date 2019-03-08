@@ -8,8 +8,12 @@
 .container {
   min-height: 100vh;
     position: relative;
-    padding-bottom: 90px;
+    padding-bottom: 70px;
     box-sizing: border-box;
+}
+
+.wrapper {
+  margin-top: 4em;
 }
 
 .schedule {
@@ -39,3 +43,4 @@
 //   align-items:space-between;
 
 // }
+

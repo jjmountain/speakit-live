@@ -1,10 +1,4 @@
-.container h1 {
-    text-align: center;
-}
 
-.container p {
-    text-align: center;
-}
 
 .row-eq-height {
     display: flex;
@@ -19,8 +13,8 @@
 }
 
 .time-trial-columns {
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-evenly; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     height: 80vh;
 }

@@ -4,11 +4,15 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.new
     @attendance.lesson = Lesson.find(params[:lesson_id])
     @attendance.student = current_student
-    if @attendance.save!
+
+    if @attendance.save
       redirect_to lesson_path(@attendance.lesson_id)
     else
       raise
     end
+
+  rescue ActiveRecord::RecordNotUnique
+    redirect_to lesson_path(@attendance.lesson)      
   end
 
   def destroy
@@ -33,3 +37,4 @@ class AttendancesController < ApplicationController
   end
 
 end
+  
