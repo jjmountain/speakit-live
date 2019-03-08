@@ -13,6 +13,8 @@ image_data7 = File.read('app/assets/images/Student_7.jpg')
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts 'destroying time trials'
+TimeTrial.destroy_all
 puts 'destroying lessons'
 Lesson.destroy_all
 puts 'destroying attendances'
@@ -21,8 +23,6 @@ puts 'destroying teachers'
 Teacher.destroy_all
 puts 'destroying students'
 Student.destroy_all
-puts 'destroying time trials'
-TimeTrial.destroy_all
 
 puts 'creating teacher'
 
@@ -68,7 +68,7 @@ Student.create!(
   email: "miyuki@suzuki.com",
   password: "secret",
   student_number: "1",
-  photo: "image_data1"
+  photo: File.open("./app/assets/images/Student_1.jpg")
 )
 
 Student.create!(
@@ -78,7 +78,7 @@ Student.create!(
   email: "mana@kuriya.com",
   password: "secret",
   student_number: "2",
-  photo: "image_data2"
+  photo: File.open("./app/assets/images/Student_2.jpg")
 )
 
 
@@ -89,7 +89,7 @@ Student.create!(
   email: "shinichi@kurimoto.com",
   password: "secret",
   student_number: "3",
-  photo: "image_data3"
+  photo: File.open("./app/assets/images/Student_3.jpg")
 )
 
 Student.create!(
@@ -99,7 +99,7 @@ Student.create!(
   email: "yuya@mano.com",
   password: "secret",
   student_number: "4",
-  photo: "image_data4"
+  photo: File.open("./app/assets/images/Student_4.jpg")
 )
 
 Student.create!(
@@ -109,7 +109,7 @@ Student.create!(
   email: "genki@kojima.com",
   password: "secret",
   student_number: "5",
-  photo: "image_data5"
+  photo: File.open("./app/assets/images/Student_5.jpg")
 )
 
 Student.create!(
@@ -119,7 +119,7 @@ Student.create!(
   email: "nanae@matsumura.com",
   password: "secret",
   student_number: "6",
-  photo: "image_data6"
+  photo: File.open("./app/assets/images/Student_6.jpg")
 )
 
 Student.create!(
@@ -129,7 +129,7 @@ Student.create!(
   email: "mitsuyuki@ohara.com",
   password: "secret",
   student_number: "7",
-  photo: "image_data7"
+  photo: File.open("./app/assets/images/Student_7.jpg")
 )
 
 Student.create!(

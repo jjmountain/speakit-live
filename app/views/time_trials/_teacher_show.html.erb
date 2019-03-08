@@ -2,7 +2,7 @@
   <div class="col-sm-4 time-trial-columns">
 
     <div class="card-student">
-      <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar", alt: "avatar" %>
+      <%= image_tag @time_trial.attendance_a.student.photo_url, class: "avatar", alt: "avatar" %>
       <div><%= @time_trial.attendance_a.student.first_name %> <%= @time_trial.attendance_a.student.last_name %></div>
     </div>
     <div class="card-student">
