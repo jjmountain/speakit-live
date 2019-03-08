@@ -27,7 +27,9 @@ class TimeTrialsController < ApplicationController
   def update
     # binding.pry
     @time_trial = TimeTrial.find(params[:id])
-    @time_trial.completed = true if @time_trial.audio && @time_trial.seconds)
+    if @time_trial.audio && @time_trial.seconds
+      @time_trial.completed = true
+    end
     @time_trial.update(time_trial_params)
     redirect_to lesson_path(@time_trial.lesson)
   end

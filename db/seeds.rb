@@ -69,8 +69,11 @@ Student.create!(
   email: "miyuki@suzuki.com",
   password: "secret",
   student_number: "1",
-  photo: File.open("./app/assets/images/Student_1.jpg")
+  photo: File.open("./app/assets/images/Student_2.jpg")
 )
+
+# rescue => error
+# puts error
 
 Student.create!(
   first_name: "Mana",
@@ -286,6 +289,7 @@ Student.create!(
   birth_date: Date.new,
   email: "keisuke@suzuki.com",
   password: "secret",
-  student_number: "21"
+  student_number: "21",
+  photo: File.open("./app/assets/images/Student_7.jpg")
 )
 # puts '20 attendances created'
