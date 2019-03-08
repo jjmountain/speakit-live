@@ -28,10 +28,10 @@
         <%= l.learning_goal %>
       </div>
       <div class="col-sm-2">
-        <% if l.completed == true %>
-          <p style="color:#03C651">Complete</p>
+      <% if l.completed == true %>
+        <p style="color:#03C651; text-align: left;">Complete</p>
         <% elsif l.completed == false %>
-          <p style="color:#F2994A">In Progress</p>
+        <p style="color:#F2994A; text-align: left;">In Progress</p>
         <% end %>
       </div>
       <div class="col-sm-2">
