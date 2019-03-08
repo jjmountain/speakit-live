@@ -13,12 +13,18 @@ image_data7 = File.read('app/assets/images/Student_7.jpg')
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts 'destroying lessons'
+Lesson.destroy_all
+puts 'destroying attendances'
+Attendance.destroy_all
+puts 'destroying teachers'
+Teacher.destroy_all
+puts 'destroying students'
+Student.destroy_all
+puts 'destroying time trials'
+TimeTrial.destroy_all
 
 puts 'creating teacher'
-Attendance.destroy_all
-Lesson.destroy_all
-Teacher.destroy_all
-Student.destroy_all
 
 teacher = Teacher.create!(
   first_name: "Mike",
