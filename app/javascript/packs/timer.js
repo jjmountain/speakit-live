@@ -11,7 +11,7 @@ const timerForm = document.querySelector('#time-trial-seconds')
 
 document.querySelector('.startButton').addEventListener('click', function () {
     // console.log('start!')
-    timer.start({ precision: 'secondTenths', target: { seconds: 60 } });
+    timer.start({ countdown: true, precision: 'secondTenths', startValues: {seconds: 60}});
 });
 
 $('#chronoExample .pauseButton').click(function () {

@@ -69,6 +69,10 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
   //start the recording process
   rec.record()
 
+  // My attempt to try and start the timer from the record button
+  // timer.start({ precision: 'secondTenths', target: { seconds: 60 } });
+
+
   console.log("Recording started");
 
 }).catch(function(err) {
