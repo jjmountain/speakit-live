@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="wrapper">
+    <h2><%= @course.name %> </h2>
+    <div class="row schedule">
+      <div class="col-xs-2 small">
+        <h4>Lesson No.</h4>
+      </div>
+      <div class="col-xs-2 small">
+        <h4>Date</h4>
+      </div>
+      <div class="col-xs-2 small">
+        <h4>Learning Goal</h4>
+      </div>
+      <div class="col-xs-2 small">
+        <h4>Status</h4>
+      </div>
+
+    </div>
+      <% @course.lessons.each_with_index do | lesson, index | %>
+      <div class="row schedule_details">
+        <div class="col-xs-2 small">
+          <%= index + 1%>
+        </div>
+        <div class="col-xs-2 small">
+          <%= lesson.start_time.strftime('%D') %>
+        </div>
+        <div class="col-xs-2 small">
+          <%= lesson.learning_goal %>
+        </div>
+        <div class="col-xs-2 small">
+        <% if lesson.completed == true %>
+          <p style="color:#03C651; text-align: left;">Complete</p>
+          <% elsif lesson.completed == false %>
+          <p style="color:#F2994A; text-align: left;">In Progress</p>
+          <% end %>
+        </div>
+        <div class="col-xs-2 small">
+          <% if student_signed_in? && lesson.completed == false%>
+
+
+            <%#= link_to "Join lesson", lesson_attendances_path(lesson.id), method: :post %>
+            <%= simple_form_for [lesson, Attendance.new] do |f| %>
+            <%= f.submit "Join lesson", class: "btn-2" %>
+            <% end %>
+          <% elsif current_teacher && lesson.completed == false %>
+            <%= link_to "Continue", lesson_path(lesson) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <% if teacher_signed_in? %>
+    <div class="row">
+
+      <%= link_to "Create Lesson", new_course_lesson_path(@course), class: "btn btn-primary" %>
+    </div>
+    <% end %>
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-sm-4">
+        <div class="new-lesson">
+        <h3>Create a New Lesson</h3>
+          <%= simple_form_for([@course, @lesson], url: course_lessons_path, method: :post) do |f| %>
+            <%= f.input :learning_goal %>
+            <%= f.input :time_goal %>
+            <%= f.button :submit, class: "btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
