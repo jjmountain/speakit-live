@@ -3,37 +3,59 @@
   <a href="/" class="navbar-speakit_live-brand">
     <%= image_tag "speak_it_logo.png", alt:"speakit_live_logo"%>
   </a>
+  <ul class="navbar-speakit_live_links">
+    <li class="links">
+      <a data-test="home-nav" class="uWoNt _2QyU5" href="/">Home</a></li>
+    <li class="links">
+      <a data-test="discussion-nav" class="_2QyU5" href="#">Courses</a></li>
+    <li class="links">
+      <a data-test="discussion-nav" class="_2QyU5" href="#">Lessons</a></li>
+  </ul>
 
   <!-- Right Navigation -->
-    <div class="navbar-speakit_live-right hidden-xs hidden-sm">
-
-
+  <div class="navbar-speakit_live-right hidden-xs hidden-sm">
 
     <% if !student_signed_in? && !teacher_signed_in? %>
-        <%= link_to "Teacher Sign In", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
-      <% end %>
+    <%= link_to "Teacher Sign In", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
+    <% end %>
     <% if !student_signed_in? && !teacher_signed_in? %>
-      <%= link_to "Student Sign In", new_student_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
+    <%= link_to "Student Sign In", new_student_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
     <% end %>
     <% if teacher_signed_in? %>
-      <%= link_to "Teacher Sign Out", destroy_teacher_session_path, method: :delete %>
+    <%= link_to "Teacher Sign Out", destroy_teacher_session_path, method: :delete %>
     <% end %>
     <% if student_signed_in? %>
-      <%= link_to "Student Sign Out", destroy_student_session_path, method: :delete %>
+    <%= link_to "Student Sign Out", destroy_student_session_path, method: :delete %>
     <% end %>
-    <!-- Profile picture with dropdown list -->
 
-  </div>
-
-  <!-- Dropdown appearing on mobile only -->
-  <div class="navbar-speakit_live-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-speakit_live-dropdown-menu">
-        <li><a href="#">Log in</a></li>
-        <li><a href="#">Sign up</a></li>
-        <li><a href="#">Messages</a></li>
-      </ul>
+    <div class="navbar-speakit_live_avatar">
+      <div class="dropdown">
+        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle"
+          id="navbar-wagon-menu" data-toggle="dropdown">
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Log Out</a></li>
+        </ul>
+      </div>
     </div>
   </div>
+</div>
+
+
+<!-- Profile picture with dropdown list -->
+
+
+
+<!-- Dropdown appearing on mobile only -->
+<div class="navbar-speakit_live-item hidden-md hidden-lg">
+  <div class="dropdown">
+    <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
+    <ul class="dropdown-menu dropdown-menu-right navbar-speakit_live-dropdown-menu">
+      <li><a href="#">Log in</a></li>
+      <li><a href="#">Sign up</a></li>
+      <li><a href="#">Messages</a></li>
+    </ul>
+  </div>
+</div>
 </div>

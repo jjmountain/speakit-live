@@ -13,7 +13,7 @@
 
   /* Logo */
 .navbar-speakit_live-brand img {
-   width: 200px;
+   width: 176px;
 }
 
 
@@ -45,6 +45,17 @@
     padding: 0 20px;
   }
 
+  .navbar-speakit_live-link{
+    border-radius: 98px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 2px;
+    padding: 8px 15px;
+  }
+
 
 .footer {
    margin-top:30px;
@@ -64,6 +75,16 @@
    }
 }
 
+.navbar-speakit_live_links .links {
+display: inline-block;
+-ms-flex-negative: 0;
+flex-shrink: 0;
+margin: 17px 20px 0 17px;
+padding: 0;
+position: relative;
+white-space: nowrap;
+width: auto;
+}
 
 // @media only screen and (max-width: 600px) {
 //   .banner {
