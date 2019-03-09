@@ -1,11 +1,13 @@
 .card-student {
         display: flex;
+        justify-content: space-evenly;
         align-items: center;
         padding: 20px;
         overflow: hidden;
         height: 90px;
         background: white;
         box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        font-size: 23px;
 }
 
 .card-feedback {
