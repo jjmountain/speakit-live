@@ -36,6 +36,24 @@ teacher = Teacher.create!(
 
 puts 'teacher created'
 
+puts 'creating courses'
+
+course_one = Course.create!(
+  name: "English Communication A",
+  description: "1st year English speaking class",
+  school: "Kanto Gakuin University",
+  teacher: Teacher.all.sample
+  )
+
+course_two = Course.create!(
+  name: "English Communication B",
+  description: "2nd year English speaking class",
+  school: "Kanto Gakuin University",
+  teacher: Teacher.all.sample
+  )
+
+puts 'courses created!'
+
 puts 'creating 2 lessons'
 
 Lesson.create!(
@@ -45,7 +63,8 @@ Lesson.create!(
   end_time: Time.now,
   completed: true,
   # teacher_id: 1
-  teacher: Teacher.all.sample
+  teacher: Teacher.all.sample,
+  course_id: course_one.id
 )
 
 Lesson.create!(
@@ -55,7 +74,8 @@ Lesson.create!(
   end_time: Time.now,
   completed: false,
   # teacher_id: 1
-  teacher: Teacher.all.sample
+  teacher: Teacher.all.sample,
+  course_id: course_one.id
 )
 
 puts '2 lesson created'
@@ -69,7 +89,8 @@ Student.create!(
   email: "miyuki@suzuki.com",
   password: "secret",
   student_number: "1",
-  photo: File.open("./app/assets/images/Student_2.jpg")
+  photo: File.open("./app/assets/images/Student_2.jpg"),
+  course_id: course_one.id
 )
 
 # rescue => error
@@ -82,7 +103,9 @@ Student.create!(
   email: "mana@kuriya.com",
   password: "secret",
   student_number: "2",
-  photo: File.open("./app/assets/images/Student_2.jpg")
+  photo: File.open("./app/assets/images/Student_2.jpg"),
+  course_id: course_one.id
+
 )
 
 
@@ -93,7 +116,9 @@ Student.create!(
   email: "shinichi@kurimoto.com",
   password: "secret",
   student_number: "3",
-  photo: File.open("./app/assets/images/Student_3.jpg")
+  photo: File.open("./app/assets/images/Student_3.jpg"),
+  course_id: course_one.id
+
 )
 
 Student.create!(
@@ -103,7 +128,8 @@ Student.create!(
   email: "yuya@mano.com",
   password: "secret",
   student_number: "4",
-  photo: File.open("./app/assets/images/Student_4.jpg")
+  photo: File.open("./app/assets/images/Student_4.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -113,7 +139,8 @@ Student.create!(
   email: "genki@kojima.com",
   password: "secret",
   student_number: "5",
-  photo: File.open("./app/assets/images/Student_5.jpg")
+  photo: File.open("./app/assets/images/Student_5.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -123,7 +150,8 @@ Student.create!(
   email: "nanae@matsumura.com",
   password: "secret",
   student_number: "6",
-  photo: File.open("./app/assets/images/Student_6.jpg")
+  photo: File.open("./app/assets/images/Student_6.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -133,7 +161,8 @@ Student.create!(
   email: "mitsuyuki@ohara.com",
   password: "secret",
   student_number: "7",
-  photo: File.open("./app/assets/images/Student_7.jpg")
+  photo: File.open("./app/assets/images/Student_7.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -143,7 +172,8 @@ Student.create!(
   email: "arata@sugimoto.com",
   password: "secret",
   student_number: "8",
-  photo: File.open("./app/assets/images/Student_7.jpg")
+  photo: File.open("./app/assets/images/Student_7.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -153,7 +183,8 @@ Student.create!(
   email: "riona@kurumado.com",
   password: "secret",
   student_number: "9",
-  photo: File.open("./app/assets/images/Student_7.jpg")
+  photo: File.open("./app/assets/images/Student_7.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -163,7 +194,8 @@ Student.create!(
   email: "ayako@goto.com",
   password: "secret",
   student_number: "10",
-  photo: File.open("./app/assets/images/Student_7.jpg")
+  photo: File.open("./app/assets/images/Student_7.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -173,7 +205,8 @@ Student.create!(
   email: "yuka@baba.com",
   password: "secret",
   student_number: "11",
-  photo: File.open("./app/assets/images/Student_7.jpg")
+  photo: File.open("./app/assets/images/Student_7.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -183,7 +216,8 @@ Student.create!(
   email: "daisuke@yano.com",
   password: "secret",
   student_number: "12",
-  photo: File.open("./app/assets/images/Student_6.jpg")
+  photo: File.open("./app/assets/images/Student_6.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -193,7 +227,8 @@ Student.create!(
   email: "rie@yamaguchi.com",
   password: "secret",
   student_number: "13",
-  photo: File.open("./app/assets/images/Student_6.jpg")
+  photo: File.open("./app/assets/images/Student_6.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -203,7 +238,8 @@ Student.create!(
   email: "keita@yoshida.com",
   password: "secret",
   student_number: "14",
-  photo: File.open("./app/assets/images/Student_5.jpg")
+  photo: File.open("./app/assets/images/Student_5.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -213,7 +249,8 @@ Student.create!(
   email: "tomoe@Okino.com",
   password: "secret",
   student_number: "15",
-  photo: File.open("./app/assets/images/Student_4.jpg")
+  photo: File.open("./app/assets/images/Student_4.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -223,7 +260,8 @@ Student.create!(
   email: "shohei@kikutani.com",
   password: "secret",
   student_number: "16",
-  photo: File.open("./app/assets/images/Student_3.jpg")
+  photo: File.open("./app/assets/images/Student_3.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -233,7 +271,8 @@ Student.create!(
   email: "eiichi@ynambu.com",
   password: "secret",
   student_number: "17",
-  photo: File.open("./app/assets/images/Student_2.jpg")
+  photo: File.open("./app/assets/images/Student_2.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -243,7 +282,8 @@ Student.create!(
   email: "yoshihiko@yamamoto.com",
   password: "secret",
   student_number: "18",
-  photo: File.open("./app/assets/images/Student_2.jpg")
+  photo: File.open("./app/assets/images/Student_2.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -253,7 +293,8 @@ Student.create!(
   email: "hanako@nakagawa.com",
   password: "secret",
   student_number: "19",
-  photo: File.open("./app/assets/images/Student_4.jpg")
+  photo: File.open("./app/assets/images/Student_4.jpg"),
+  course_id: course_one.id
 )
 
 Student.create!(
@@ -263,7 +304,8 @@ Student.create!(
   email: "toshiyuki@asano.com",
   password: "secret",
   student_number: "20",
-  photo: File.open("./app/assets/images/Student_7.jpg")
+  photo: File.open("./app/assets/images/Student_7.jpg"),
+  course_id: course_one.id
 )
 
 puts '20 students created'
@@ -290,6 +332,7 @@ Student.create!(
   email: "keisuke@suzuki.com",
   password: "secret",
   student_number: "21",
-  photo: File.open("./app/assets/images/Student_7.jpg")
+  photo: File.open("./app/assets/images/Student_7.jpg"),
+  course_id: course_one.id
 )
 # puts '20 attendances created'

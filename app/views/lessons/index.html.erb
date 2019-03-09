@@ -40,7 +40,7 @@
 
           <%#= link_to "Join lesson", lesson_attendances_path(l.id), method: :post %>
           <%= simple_form_for [l, Attendance.new] do |f| %>
-          <%= f.submit "Join lesson" %>
+          <%= f.submit "Join lesson", class: "btn-2" %>
           <% end %>
         <% elsif current_teacher && l.completed == false %>
           <%= link_to "Continue", lesson_path(l) %>

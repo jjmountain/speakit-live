@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_073203) do
+ActiveRecord::Schema.define(version: 2019_03_09_055917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 2019_03_08_073203) do
     t.index ["student_id"], name: "index_attendances_on_student_id"
   end
 
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.bigint "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "school"
+    t.index ["teacher_id"], name: "index_courses_on_teacher_id"
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.string "learning_goal"
     t.integer "time_goal"
@@ -36,6 +46,8 @@ ActiveRecord::Schema.define(version: 2019_03_08_073203) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "teacher_id"
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_lessons_on_course_id"
     t.index ["teacher_id"], name: "index_lessons_on_teacher_id"
   end
 
@@ -61,6 +73,8 @@ ActiveRecord::Schema.define(version: 2019_03_08_073203) do
     t.date "birth_date"
     t.string "student_number"
     t.integer "score"
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_students_on_course_id"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
@@ -94,7 +108,10 @@ ActiveRecord::Schema.define(version: 2019_03_08_073203) do
 
   add_foreign_key "attendances", "lessons"
   add_foreign_key "attendances", "students"
+  add_foreign_key "courses", "teachers"
+  add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "teachers"
   add_foreign_key "mistakes", "time_trials"
+  add_foreign_key "students", "courses"
   add_foreign_key "time_trials", "lessons"
 end
