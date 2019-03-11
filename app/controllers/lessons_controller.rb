@@ -13,6 +13,7 @@ class LessonsController < ApplicationController
 
   def new
     @lesson = Lesson.new(course_id: params[:course_id])
+    @course = Course.find(params[:course_id])
   end
 
   def create
@@ -27,6 +28,7 @@ class LessonsController < ApplicationController
   end
 
   def update
+    binding.pry
   end
 
   private

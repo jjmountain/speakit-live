@@ -47,7 +47,11 @@
               <%# trial.homeworks.find_by(student: current_student) %>
               <%= simple_form_for @homework do |form| %>
                 <%= form.input :comment %>
+                <%= form.input :teacher_feedback %>
                 <%= form.button :submit %>
+            </td>
+            <td>
+              <%=form.input :approved, as: :check_boxes %>
               <% end %>
             </td>
           </tr>

@@ -17,12 +17,14 @@ puts 'destroying time trials'
 TimeTrial.destroy_all
 puts 'destroying lessons'
 Lesson.destroy_all
+puts 'destroying students'
+Student.destroy_all
 puts 'destroying attendances'
 Attendance.destroy_all
 puts 'destroying teachers'
 Teacher.destroy_all
-puts 'destroying students'
-Student.destroy_all
+
+
 
 
 puts 'creating teacher'

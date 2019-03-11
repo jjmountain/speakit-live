@@ -4,7 +4,8 @@ class TimeTrialsController < ApplicationController
     @time_trial = TimeTrial.new(lesson_id: params[:lesson_id])
     @attendances = Lesson.find(params[:lesson_id]).attendances
 
-    @attendances.shuffle
+    # new_pairing(@attendances)
+    # attendance
 
     @attendance_a = @attendances.first
     @attendance_b = @attendances.last
@@ -19,23 +20,41 @@ class TimeTrialsController < ApplicationController
     end
   end
 
+  # def new_pairing(attendances)
+
+  # end
+
   def show
     @time_trial = TimeTrial.find(params[:id])
-
   end
 
   def update
-    # binding.pry
     @time_trial = TimeTrial.find(params[:id])
-    if @time_trial.audio && @time_trial.seconds
-      @time_trial.completed = true
-    end
+    # if no time trial audio is present
+    # pop up javascript alert asking the user if they are sure they want to proceed
+    # if audio is present then
     @time_trial.update(time_trial_params)
-    redirect_to lesson_path(@time_trial.lesson)
+    if @time_trial.audio.url && @time_trial.seconds
+      @time_trial.completed = true
+      redirect_to lesson_path(@time_trial.lesson)
+    elsif @time_trial.audio.url.nil?
+      flash[:alert] = "No audio."
+      render 'time_trials/show'
+    end
+    # what does update do here?
+    # should go to next time trial here if there are more time trials
+    # should I create a method to work out remaining time trials?
   end
 
   def completed?(time_trial)
 
+  end
+
+  def start
+    @time_trial = TimeTrial.find(params[:id])
+    @time_trial.started_at = DateTime.now
+    @time_trial.save
+    render body: nil, status: :no_content
   end
 
   private

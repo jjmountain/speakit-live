@@ -1,22 +1,36 @@
- <ol>
-    <% @attendances.each do | a | %>
-<%# Only display students who have presence marked as true %>
-      <% if a.present == true %>
-        <div class="row">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @attendances.each_with_index do | a, i | %>
+          <%# Only display students who have presence marked as true %>
+          <% if a.present == true %>
+          <tr>
+            <th scope="row"><%= i += 1 %></th>
+            <td><%= a.student.first_name %></td>
+            <td><%= a.student.last_name %></td>
+            <td>
+              <%= link_to '<i class="fas fa-user-times"></i>'.html_safe, unattend_attendance_path(a[:id]), method: :post %>
+            </td>
+          </tr>
+          <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="row">
         <div class="col-sm-4">
-            <li>
-              <%= a.student.first_name %> <%= a.student.last_name %> is present
-            </li>
-        </div>
-        <div class="col-sm-4">
-          <%= link_to "Remove Student", unattend_attendance_path(a[:id]), method: :post %>
+          <%= link_to "Start lesson", lesson_time_trials_path(@lesson), method: :post, class: "btn-primary" %>
         </div>
       </div>
-      <% end %>
-    <% end %>
-  </ol>
-  <div class="row">
-    <div class="col-sm-4">
-    <%= link_to "Start lesson", lesson_time_trials_path(@lesson), method: :post %>
     </div>
   </div>
+</div>
