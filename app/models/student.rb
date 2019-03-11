@@ -10,4 +10,8 @@ class Student < ApplicationRecord
   has_many :attendances
   has_many :time_trials, through: :attendances
   has_many :homeworks
+
+  def lesson_time_trials(lesson)
+    attendances.map(&:time_trials).first.select { |tt| tt.lesson == lesson }
+  end
 end
