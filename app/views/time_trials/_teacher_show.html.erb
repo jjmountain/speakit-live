@@ -27,10 +27,24 @@
           <%= f.hidden_field :seconds %>
           <%= f.submit "Submit", class: "btn btn-primary" %>
         <% end %>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card-feedback">
+
+        <%#= simple_form_for(@time_trial, html: { id: 'time-trial-start', url: time_trial_start_path, remote: true, method: :post }) do |f| %>
+        <%= simple_form_for(@time_trial, as: :time_trial, method: :post, url: time_trial_start_path, remote: true, html: { id: 'time-trial-start' }) do |f| %>
+
+          <%= button_tag "", style: "display:none;" %>
+        <% end %>
+
+        <%= simple_form_for([@time_trial, Mistake.new], html: { id: 'time-trial-mistake'}, remote: true) do |f| %>
+          <%= f.hidden_field :category %>
+          <%= f.hidden_field :time_trial_id, value: @time_trial.id %>
+          <%= button_tag "", style: "display:none;" %>
+        <% end %>
     </div>
   </div>
 </div>
+<div class="col-sm-4 time-trial-columns" style="justify-content: start; margin-top: 60px; margin-left: 70px;">
+  <div id="card-feedback">
+    <%= render 'mistakes/index' %>
+  </div>
+</div>
+

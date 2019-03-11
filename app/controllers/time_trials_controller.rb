@@ -21,7 +21,6 @@ class TimeTrialsController < ApplicationController
 
   def show
     @time_trial = TimeTrial.find(params[:id])
-
   end
 
   def update
@@ -36,6 +35,13 @@ class TimeTrialsController < ApplicationController
 
   def completed?(time_trial)
 
+  end
+
+  def start
+    @time_trial = TimeTrial.find(params[:id])
+    @time_trial.started_at = DateTime.now
+    @time_trial.save
+    render body: nil, status: :no_content
   end
 
   private

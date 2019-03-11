@@ -1,33 +1,57 @@
-  <div class="row" style="margin-bottom: 1em;">
-    <div class="col-sm-4">
-      <h4>Conversations for <%= current_student.first_name %> <%= current_student.last_name %></h4>
-    </div>
-  </div>
-  <ol>
-  <% if @time_trials %>
-    <% @time_trials.each do | t | %>
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" colspan="4">Conversations about <%= @lesson.learning_goal%> for <%= @lesson.time_goal %> seconds </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%# Only display time trials that the student was involved in %>
+          <%# @time_trials.where(attendance_a OR attendance_b == current_student) %>
+          <% current_student.lesson_time_trials(@lesson).each_with_index do | trial, index | %>
+          <tr>
+            <th scope="row"><%= index += 1 %></th>
+            <td><%= trial.attendance_a.student.first_name %> <%= trial.attendance_a.student.last_name %></td>
+            <td> and </td>
+            <td><%= trial.attendance_b.student.first_name %>  <%= trial.attendance_b.student.last_name %></td>
+            <td><%= link_to "Join this trial", lesson_time_trial_path(@lesson, trial) if trial.completed == false %></td>
+            <% if trial.audio.file %>
+              <td><%= audio_tag trial.audio, controls: true %></td>
+            <% end %>
+          </tr>
+          <% if trial.completed %>
+          <tr>
+            <td colspan="2">Feedback</td>
+          </tr>
+              <% trial.mistakes.each_with_index do | mistake, index | %>
+              <tr>
+              <td colspan="3">
+                <%= mistake.category %> mistake at <%= (mistake.created_at - trial.started_at).round(2) %>
+              </td>
+              <td colspan="3">
+                <% @homework = mistake.homeworks.find_by(student: current_student) %>
+                <%# trial.homeworks.find_by(student: current_student) %>
+                <%= simple_form_for @homework do |form| %>
+                  <%= form.input :comment %>
+                  <%= form.button :submit %>
+                <% end %>
+              </td>
+            </tr>
+              <% end %>
+              <% end %>
+          <% end %>
+        </tbody>
+      </table>
       <div class="row">
         <div class="col-sm-4">
-          <li>
-            <%= t.attendance_a.student.first_name %> <%= t.attendance_a.student.last_name %> and <%= t.attendance_b.student.first_name %> <%= t.attendance_b.student.last_name %>
-          </li>
-        </div>
-        <div class="col-sm-2">
 
-          <%= link_to "Join this trial", lesson_time_trial_path(@lesson, t) if t.completed == false %>
         </div>
-        <% if t.audio %>
-          <div class="col-sm-4" style="padding-bottom: 1em;">
-            <%= audio_tag t.audio, controls: true %>
-          </div>
-        <% end %>
       </div>
-    <% end %>
-  </ol>
-  <% else %>
-  <div class="row">
-    <div class="col-sm-4">
-      You have no time trials yet.
     </div>
   </div>
-  <% end %>
+
+
+

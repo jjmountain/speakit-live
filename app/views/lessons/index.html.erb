@@ -15,48 +15,50 @@
     </div>
 
   </div>
-    <% @lessons.each_with_index do | l, i | %>
-    <div class="row schedule_details">
-      <div class="col-xs-2 small">
-        <%= i + 1%>
-      </div>
-      <div class="col-xs-2 small">
-        <%= l.start_time.strftime('%D') %>
-      </div>
-      <div class="col-xs-2 small">
-        <%= l.learning_goal %>
-      </div>
-      <div class="col-xs-2 small">
+  <% @lessons.each_with_index do | l, i | %>
+  <div class="row schedule_details">
+    <div class="col-xs-2 small">
+      <%= i + 1%>
+    </div>
+    <div class="col-xs-2 small">
+      <%= l.start_time.strftime('%D') %>
+    </div>
+    <div class="col-xs-2 small">
+      <%= l.learning_goal %>
+    </div>
+    <div class="col-xs-2 small">
       <% if l.completed == true %>
-        <p style="color:#03C651; text-align: left;">Complete</p>
-        <% elsif l.completed == false %>
-        <p style="color:#F2994A; text-align: left;">In Progress</p>
-        <% end %>
-      </div>
-      <div class="col-xs-2 small">
-        <% if student_signed_in? && l.completed == false%>
+      <p style="color:#03C651; text-align: left;">Complete</p>
+      <% elsif l.completed == false %>
+      <p style="color:#F2994A; text-align: left;">In Progress</p>
+      <% end %>
+    </div>
+    <div class="col-xs-2 small">
+      <% if student_signed_in? && l.completed == false%>
 
 
-          <%#= link_to "Join lesson", lesson_attendances_path(l.id), method: :post %>
-          <%= simple_form_for [l, Attendance.new] do |f| %>
-          <%= f.submit "Join lesson", class: "btn-2" %>
-          <% end %>
-        <% elsif current_teacher && l.completed == false %>
-          <%= link_to "Continue", lesson_path(l) %>
-        <% end %>
-      </div>
+      <%#= link_to "Join lesson", lesson_attendances_path(l.id), method: :post %>
+      <%= simple_form_for [l, Attendance.new] do |f| %>
+      <%= f.submit "Join lesson", class: "btn-2" %>
+      <% end %>
+      <% elsif current_teacher && l.completed == false %>
+      <%= link_to "Continue", lesson_path(l) %>
+      <% end %>
     </div>
   <% end %>
   <% if teacher_signed_in? %>
   <div class="row">
 
     <%= link_to "Create Lesson", new_course_lesson_path(@course), class: "btn btn-primary" %>
+
   </div>
   <% end %>
+  <%# if teacher_signed_in? %>
+  <!-- # <div class="row">
+
+  #   <%#=#link_to "Create Lesson", new_lesson_path, class: "btn btn-primary" %>
+  # </div> -->
+  <%# end %>
 
 
 </div>
-
-
-
-

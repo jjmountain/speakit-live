@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_055917) do
+ActiveRecord::Schema.define(version: 2019_03_11_012245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,22 @@ ActiveRecord::Schema.define(version: 2019_03_09_055917) do
     t.index ["teacher_id"], name: "index_courses_on_teacher_id"
   end
 
+  create_table "homeworks", force: :cascade do |t|
+    t.text "comment"
+    t.boolean "approved", default: false
+    t.bigint "mistake_id"
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mistake_id"], name: "index_homeworks_on_mistake_id"
+    t.index ["student_id"], name: "index_homeworks_on_student_id"
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.string "learning_goal"
     t.integer "time_goal"
-    t.datetime "start_time", default: "2019-03-11 01:12:20"
+
+    t.datetime "start_time", default: "2019-03-09 08:03:59"
     t.datetime "end_time"
     t.boolean "completed", default: false
     t.datetime "created_at", null: false
@@ -103,12 +115,15 @@ ActiveRecord::Schema.define(version: 2019_03_09_055917) do
     t.bigint "attendance_a_id"
     t.bigint "attendance_b_id"
     t.boolean "completed", default: false
+    t.datetime "started_at"
     t.index ["lesson_id"], name: "index_time_trials_on_lesson_id"
   end
 
   add_foreign_key "attendances", "lessons"
   add_foreign_key "attendances", "students"
   add_foreign_key "courses", "teachers"
+  add_foreign_key "homeworks", "mistakes"
+  add_foreign_key "homeworks", "students"
   add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "teachers"
   add_foreign_key "mistakes", "time_trials"
