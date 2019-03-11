@@ -28,6 +28,7 @@ class LessonsController < ApplicationController
   end
 
   def update
+    binding.pry
   end
 
   private
