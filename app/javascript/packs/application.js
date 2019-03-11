@@ -8,16 +8,16 @@ const logMistake = (event) => {
     submitMistakeForm('pronunciation');
     // grammar mistake
   } else if (event.key === "g") {
-    submitMistakeForm(2);
+    submitMistakeForm('grammar');
     // content mistake
   } else if (event.key === "c") {
-    submitMistakeForm(2);
+    submitMistakeForm('content');
     // word mistake
   } else if (event.key === "w") {
-    submitMistakeForm(2);
+    submitMistakeForm('word choice');
     // silence mistake
   } else if (event.key === "s") {
-    submitMistakeForm(2);
+    submitMistakeForm('silence');
   }
 };
 

@@ -1,4 +1,9 @@
 <h3>Feedback</h3>
-<% @time_trial.mistakes.each do | mistake | %>
-<%= mistake.created_at %> - <%= mistake.category %>
+<table>
+  <% @time_trial.mistakes.each do | mistake | %>
+  <tr>
+    <td><%= (mistake.created_at - @time_trial.started_at).round(2) %></td>
+    <td><%= mistake.category %></td>
+  </tr>
 <% end %>
+</table>

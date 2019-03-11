@@ -22,4 +22,6 @@ Rails.application.routes.draw do
       post 'unattend'
     end
   end
+
+  resources :homeworks, only: [ :update ]
 end

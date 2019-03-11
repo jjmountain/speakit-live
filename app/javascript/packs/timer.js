@@ -11,7 +11,7 @@ const timerForm = document.querySelector('#time-trial-seconds')
 
 document.querySelector('.startButton').addEventListener('click', function () {
     // console.log('start!')
-    timer.start({precision: 'secondTenths', startValues: {seconds: 0}, target: {seconds: 10}});
+    timer.start({precision: 'secondTenths', startValues: {seconds: 0}, target: {seconds: 30}});
     document.querySelector('#time-trial-start button').click();
 });
 
