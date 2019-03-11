@@ -7,6 +7,7 @@ class LessonsController < ApplicationController
   def show
     # binding.pry
     @lesson = Lesson.find(params[:id])
+    @course = Course.find(@lesson.course_id)
     @attendances = Attendance.where(lesson_id: @lesson.id)
     @time_trials = TimeTrial.where(lesson_id: @lesson.id)
   end
