@@ -13,6 +13,7 @@ class LessonsController < ApplicationController
 
   def new
     @lesson = Lesson.new(course_id: params[:course_id])
+    @course = Course.find(params[:course_id])
   end
 
   def create
