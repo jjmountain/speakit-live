@@ -1,5 +1,5 @@
 class Mistake < ApplicationRecord
-  MISTAKES = ["pronunciation", "grammar", "inaudible", "word choice", "incorrect answer"]
+  CATEGORIES = ["pronunciation", "grammar", "content", "word choice", "silence"]
   belongs_to :time_trial
   validates :category, presence: true
 end
