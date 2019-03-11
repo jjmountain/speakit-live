@@ -36,7 +36,6 @@
     <div class="col-xs-2 small">
       <% if student_signed_in? && l.completed == false%>
 
-
       <%#= link_to "Join lesson", lesson_attendances_path(l.id), method: :post %>
       <%= simple_form_for [l, Attendance.new] do |f| %>
       <%= f.submit "Join lesson", class: "btn-2" %>
@@ -49,7 +48,7 @@
   <% if teacher_signed_in? %>
   <div class="row">
 
-    <%= link_to "Create Lesson", new_course_lesson_path(@course), class: "btn btn-primary" %>
+    <%# link_to "Create Lesson", new_course_lesson_path(@course), class: "btn btn-primary" %>
 
   </div>
   <% end %>

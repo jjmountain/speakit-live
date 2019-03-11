@@ -1,8 +1,10 @@
-<div class="container"></container><h2 style="display: flex; justify-content: center;">Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %></h2>
-  <% if teacher_signed_in? %>
-   <%= render "teacher_show" %>
+<div class="container">
+  <% if teacher_signed_in? && @lesson.completed == false %>
+    <%= render "teacher_show" %>
+  <% elsif teacher_signed_in? && @lesson.completed == true %>
+      <%= render "teacher_show_homework" %>
   <% elsif student_signed_in? %>
-    <%= render "student_show" %>
+     <%= render "student_show" %>
   <% end %>
 </div>
 
