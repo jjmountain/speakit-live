@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 
 .banner {
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url('landing_page.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url('chalkboard.jpg');
     color: white;
     height:75vh;
     /* if you have a 70px navbar => height: calc(100vh - 70px); */
@@ -10,14 +10,14 @@
     // background-attachment: fixed;
     background-position: center;
     display: flex;
-    // align-items: center;
-    justify-content: left;
-    padding-left: 40px;
+    align-items: center;
+    justify-content: center;
+    // padding-left: 40px;
     margin-bottom: 20px;
-    h2 {
+    h2{
       font-style:italic;
       font-weight:bold;
-      margin-top:100px;
+      margin-top:60px;
       margin-bottom:30px;
     }
     p {
@@ -28,18 +28,29 @@
       padding-left:30px;
       font-style: italic;
       margin-top:50px;
+      font-size:50px;
+      // text-decoration: overline;
       // margin-top:20px;
     }
+    h3 a {
+      color:#fff;
+    }
   }
-// .container {
-//   h2 {
-//     text-align: center;
-//   }
-// }
+.container {
+  h2.landing_page {
+    text-align: center;
+    font-family: 'ClearSansLightRegular';
+    font-weight: bold;
+  }
+}
+
 .land_card {
   margin: 10px 0;
   text-align: center;
   p {
+    font-family: 'ClearSansLightRegular';
+   font-weight: normal;
+   font-style: normal;
     margin-top:5px;
     width: 250px;
     margin: 0 auto;
@@ -58,10 +69,6 @@
       padding-left:10px;
     }
 
-    h3 {
-      font-size:20px;
-
-    }
   }
 }
 

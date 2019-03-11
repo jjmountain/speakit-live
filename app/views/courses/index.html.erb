@@ -5,7 +5,7 @@
       <% @courses.each do | course | %>
       <%= link_to course_path(course) do %>
         <div class="col-xs-12 col-sm-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
             <div class="card-category">
               <%= course.school %>
             </div>
@@ -13,6 +13,8 @@
               <h2><%= course.name %></h2>
               <p><%= course.description %></p>
             </div>
+
+            <%= link_to "Create Lesson", new_course_lesson_path(course), class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>
