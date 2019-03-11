@@ -38,6 +38,13 @@ class TimeTrialsController < ApplicationController
 
   end
 
+  def start
+    @time_trial = TimeTrial.find(params[:id])
+    @time_trial.started_at = DateTime.now
+    @time_trial.save
+    render body: nil, status: :no_content
+  end
+
   private
 
   def time_trial_params

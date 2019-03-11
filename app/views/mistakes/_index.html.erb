@@ -1,0 +1,4 @@
+<h3>Feedback</h3>
+<% @time_trial.mistakes.each do | mistake | %>
+<%= mistake.created_at %> - <%= mistake.category %>
+<% end %>

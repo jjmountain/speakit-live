@@ -9,4 +9,5 @@ class Student < ApplicationRecord
   validates :student_number, presence: true
   has_many :attendances
   has_many :time_trials, through: :attendances
+  has_many :homeworks
 end
