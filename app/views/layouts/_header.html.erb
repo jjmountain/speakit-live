@@ -7,8 +7,6 @@
   <!-- Right Navigation -->
     <div class="navbar-speakit_live-right hidden-xs hidden-sm">
 
-
-
     <% if !student_signed_in? && !teacher_signed_in? %>
         <%= link_to "Teacher Sign In", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
       <% end %>
