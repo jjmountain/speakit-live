@@ -28,8 +28,15 @@
   color: white;
   position: relative;
   margin-bottom: 30px;
-
+  padding-bottom: 30px;
 }
+
+.card {
+  .btn{
+    margin-top: 180px;
+  }
+}
+
 .card-user {
   position: absolute;
   right: 10px;
