@@ -17,6 +17,7 @@
 
 .course-card {
   background-image: url('blackboard_image1.jpg');
+  filter: brightness(85%);
 }
 
 .card {
@@ -46,7 +47,7 @@
 }
 .card-description {
   position: absolute;
-  bottom: 65px;
+  bottom: 80px;
   left: 50px;
 }
 .card-description h2 {
