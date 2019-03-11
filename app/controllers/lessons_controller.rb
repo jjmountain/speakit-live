@@ -12,12 +12,13 @@ class LessonsController < ApplicationController
   end
 
   def new
-    @lesson = Lesson.new
+    @lesson = Lesson.new(course_id: params[:course_id])
   end
 
   def create
     @lesson = Lesson.new(lesson_params)
     @lesson.teacher = current_teacher
+    @lesson.course_id = params[:course_id]
     if @lesson.save!
       redirect_to lesson_path(@lesson)
     else
@@ -31,7 +32,7 @@ class LessonsController < ApplicationController
   private
 
   def lesson_params
-    params.require(:lesson).permit( :learning_goal, :start_time, :time_goal, :teacher_id)
+    params.require(:lesson).permit( :learning_goal, :start_time, :time_goal, :teacher_id, :course_id)
   end
 end
 

@@ -1,40 +1,39 @@
 <div class="container">
   <h1> Lessons </h1>
   <div class="row schedule">
-
-    <div class="col-sm-2">
+    <div class="col-xs-2 small">
       <h4>Lesson No.</h4>
     </div>
-    <div class="col-sm-2">
+    <div class="col-xs-2 small">
       <h4>Date</h4>
     </div>
-    <div class="col-sm-4">
+    <div class="col-xs-2 small">
       <h4>Learning Goal</h4>
     </div>
-    <div class="col-sm-2">
+    <div class="col-xs-2 small">
       <h4>Status</h4>
     </div>
 
   </div>
     <% @lessons.each_with_index do | l, i | %>
     <div class="row schedule_details">
-      <div class="col-sm-2">
+      <div class="col-xs-2 small">
         <%= i + 1%>
       </div>
-      <div class="col-sm-2">
+      <div class="col-xs-2 small">
         <%= l.start_time.strftime('%D') %>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-2 small">
         <%= l.learning_goal %>
       </div>
-      <div class="col-sm-2">
+      <div class="col-xs-2 small">
       <% if l.completed == true %>
         <p style="color:#03C651; text-align: left;">Complete</p>
         <% elsif l.completed == false %>
         <p style="color:#F2994A; text-align: left;">In Progress</p>
         <% end %>
       </div>
-      <div class="col-sm-2">
+      <div class="col-xs-2 small">
         <% if student_signed_in? && l.completed == false%>
 
 

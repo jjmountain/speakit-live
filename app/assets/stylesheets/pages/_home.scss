@@ -31,11 +31,11 @@
       // margin-top:20px;
     }
   }
-.container {
-  h2 {
-    text-align:center;
-  }
-}
+// .container {
+//   h2 {
+//     text-align: center;
+//   }
+// }
 .land_card {
   margin: 10px 0;
   text-align: center;
@@ -63,4 +63,16 @@
 
     }
   }
+}
+
+.small {
+  min-width: 70px;
+}
+
+.medium {
+  min-width: 200px;
+}
+
+.large {
+  min-width: 300px;
 }
