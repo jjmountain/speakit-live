@@ -1,4 +1,4 @@
-<div class="container"></container><h2>Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %></h2>
+<div class="container"></container><h2 style="display: flex; justify-content: center;">Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %></h2>
   <% if teacher_signed_in? %>
    <%= render "teacher_show" %>
   <% elsif student_signed_in? %>
