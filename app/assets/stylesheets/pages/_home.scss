@@ -3,7 +3,7 @@
 .banner {
     background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url('chalkboard.jpg');
     color: white;
-    height:75vh;
+    height:65vh;
     /* if you have a 70px navbar => height: calc(100vh - 70px); */
     background-size: cover;
     background-repeat: no-repeat;
@@ -17,7 +17,7 @@
     h2{
       font-style:italic;
       font-weight:bold;
-      margin-top:60px;
+      // margin-top:20px;
       margin-bottom:30px;
     }
     p {
@@ -57,16 +57,43 @@
   }
 }
 
+
+@media only screen and (max-width: 768px) {
+  .banner {
+    h2 {
+      margin-top:30px;
+      padding-left:6px;
+      text-align:center;
+    }
+    p {
+      font-size:16px;
+      padding-left:60px;
+    }
+
+    h3 {
+      padding-left:80px;
+    }
+
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .banner {
     padding-left:20px;
     h2 {
       margin-top:60px;
       font-size:24px;
+      padding-left:6px;
+      text-align:left;
     }
     p {
       font-size:16px;
-      padding-left:10px;
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    h3 {
+      padding-left:20px;
     }
 
   }
