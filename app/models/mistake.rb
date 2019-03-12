@@ -17,8 +17,8 @@ class Mistake < ApplicationRecord
     )
   end
 
-  def calculate_seconds
-    return .created_at - .time_trial.started_at.round(2)
-  end
+  # def calculate_seconds
+  #   return .created_at - .time_trial.started_at.round(2)
+  # end
 
 end
