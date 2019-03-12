@@ -16,7 +16,7 @@
   <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
   <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
 
-  <%= simple_form_for([@time_trial.lesson, @time_trial])  do |f| %>
+  <%= simple_form_for(@time_trial, url: update_audio_path)  do |f| %>
     <%= f.input :audio, wrapper_html: { class: 'hide' } %>
   <% end %>
   </div>

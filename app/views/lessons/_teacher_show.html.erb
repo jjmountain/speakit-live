@@ -23,6 +23,7 @@
             <td>
               <%= link_to '<index class="fas fa-user-times"></index>'.html_safe, unattend_attendance_path(attendance[:id]), method: :post %>
             </td>
+            <td><%= link_to 'See conversations', lesson_student_path(@lesson, attendance.student_id) unless attendance.time_trials.empty? %></td>
           </tr>
           <% end %>
           <% end %>

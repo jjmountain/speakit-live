@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   resources :courses, only: [ :index, :show, :new, :create, :update ]  do
     resources :lessons, only: [ :new, :create ]
   end
-  post 'time_trial/:id/start', to: 'time_trials#start', as: :time_trial_start
+  post 'time_trials/:id/start', to: 'time_trials#start', as: :time_trial_start
+  patch 'time_trials/:id/update_audio', to: 'time_trials#update_audio', as: :update_audio
 # old routes
   resources :lessons, only: [ :index, :show, :update ]  do
     resources :attendances, only: [ :create ]
     resources :time_trials, only: [ :create, :show, :update ]
+    resources :students, only: [ :show ]
   end
   resources :time_trials, only: [ :index ] do
     resources :mistakes, only: [ :create ]
