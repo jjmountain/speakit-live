@@ -31,10 +31,10 @@
     justify-content: space-between;
     font-size:0.8em;
     a {
-      color:black;
+      color: $blackboard;
     }
     a:hover {
-      color:#f84f44;
+      opacity: 0.8;
       text-decoration: none;
     }
   }
@@ -43,6 +43,9 @@
   .navbar-speakit_live-item {
     cursor: pointer;
     padding: 0 20px;
+    a {
+      color: $blackboard;
+    }
   }
 
 
@@ -80,6 +83,10 @@
     font-size:75%;
     color: $blackboard;
   }
+}
+
+.navbar-wagon-dropdown-menu {
+  font-size: 0.8em;
 }
 
 .navbar-icon-link:first-child {

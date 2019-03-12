@@ -7,34 +7,55 @@
   <!-- Right Navigation -->
     <div class="navbar-speakit_live-right hidden-xs hidden-sm">
       <% if teacher_signed_in? %>
-        <%= link_to "Courses", courses_path, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
-        <%= link_to "Teacher Sign Out", destroy_teacher_session_path, method: :delete, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
+
+        <!-- When Teacher is Signed In -->
+        <%= link_to "Courses", courses_path, class: "navbar-speakit_live-item" %>
+        <div class="navbar-wagon-item">
+          <div class="dropdown">
+            <%= image_tag 'teacher_icon.png', class: "navbar-icon dropdown-toggle", id: "navbar-wagon-menu", "data-toggle": "dropdown" %>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li><%= link_to "Log Out", destroy_teacher_session_path, method: :delete, class: "navbar-speakit_live-item navbar-speakit_live-link" %></li>
+            </ul>
+          </div>
+        </div>
+
       <% elsif student_signed_in? %>
-      <%= link_to "Courses", courses_path, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
-        <%= link_to "Student Sign Out", destroy_student_session_path, method: :delete, class: "navbar-speakit_live-item navbar-speakit_live-link" %>
+
+        <!-- When Student is Signed In -->
+        <%= link_to "Courses", courses_path, class: "navbar-speakit_live-item" %>
+        <div class="navbar-wagon-item">
+          <div class="dropdown">
+            <%= image_tag 'student_icon.png', class: "navbar-icon dropdown-toggle", id: "navbar-wagon-menu", "data-toggle": "dropdown" %>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li><%= link_to "Log Out", destroy_student_session_path, method: :delete, class: "navbar-speakit_live-item navbar-speakit_live-link" %></li>
+            </ul>
+          </div>
+        </div>
       <% else %>
+
+        <!-- Student Sign In -->
         <%= link_to new_student_session_path, class: "navbar-icon-link" do  %>
-          <%= image_tag 'student_icon.png', class: "navbar-icon"%>
+           <%= image_tag 'student_icon.png', class: "navbar-icon"%>
           <small>Student</small>
         <% end %>
-        <!-- Teacher Sign In -->
 
+        <!-- Teacher Sign In -->
         <%= link_to new_teacher_session_path, class: "navbar-icon-link" do %>
           <%= image_tag 'teacher_icon.png', class: "navbar-icon"%>
           <small>Teacher</small>
         <% end %>
-        <!-- Student Sign In -->
+
 
 
       <% end %>
 
-      <!-- Teacher is Signed In -->
 
 
 
 
 
-      <!-- Student is Signed In -->
+
+
 
       <!-- Profile picture with dropdown list -->
 
