@@ -2,7 +2,7 @@
 <table>
   <% @time_trial.mistakes.each do | mistake | %>
   <tr>
-    <td><%= (mistake.created_at - @time_trial.started_at).round(2) %></td>
+    <td><%= mistake.seconds %></td>
     <td><%= mistake.category %></td>
   </tr>
 <% end %>

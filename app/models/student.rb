@@ -13,5 +13,10 @@ class Student < ApplicationRecord
 
   def lesson_time_trials(lesson)
     attendances.map(&:time_trials).first.select { |tt| tt.lesson == lesson }
+    # attendances.map(&:time_trials).flatten.select { |tt| tt.lesson == lesson }
   end
 end
+
+# attendances.map do |attendance|
+#   attendance.time_trials
+# end

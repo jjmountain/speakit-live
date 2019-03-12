@@ -10,6 +10,10 @@ let defaultTime;
 
 const timerForm = document.querySelector('#time-trial-seconds')
 
+const secondUpdateForm = document.querySelector('#time-trial-update-seconds')
+
+const secondsGoal = parseInt(document.querySelector('#seconds-goal').innerHTML, 10)
+
 document.querySelector('.startButton').addEventListener('click', function (event) {
     const defaultTimeValue = document.querySelector('#time-trial-current-time').value
     if (defaultTimeValue === "") {
@@ -18,7 +22,7 @@ document.querySelector('.startButton').addEventListener('click', function (event
       defaultTime = parseInt(defaultTimeValue, 10)
     }
     console.log(defaultTime)
-    timer.start({precision: 'secondTenths', startValues: {seconds: defaultTime}, target: {seconds: 30}});
+    timer.start({precision: 'secondTenths', startValues: {seconds: defaultTime}, target: {seconds: secondsGoal }});
     document.querySelector('#time-trial-start button').click();
     event.currentTarget.style = 'display:none'
 });
@@ -28,7 +32,7 @@ document.querySelector('.startButton').addEventListener('click', function (event
 // });
 $('#chronoExample .stopButton').click(function () {
     timer.stop();
-    timerForm.submit();
+    // secondUpdateForm.querySelector('button').click();
 });
 // $('#chronoExample .resetButton').click(function () {
 //     timer.reset();
@@ -39,6 +43,7 @@ timer.addEventListener('secondTenthsUpdated', function (e) {
   // 2. set the seconds input value to current seconds ellapsed
   $('#chronoExample .values').html(timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']));
   timerForm.querySelector('#time_trial_seconds').value = timer.getTotalTimeValues().seconds
+  secondUpdateForm.querySelector('#time_trial_seconds').value = timer.getTotalTimeValues().seconds
 });
 timer.addEventListener('started', function (e) {
     $('#chronoExample .values').html(timer.getTimeValues().toString());

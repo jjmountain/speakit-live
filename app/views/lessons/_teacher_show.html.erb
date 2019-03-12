@@ -1,26 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-8">
+      <h4> <%= @course.name %> </h4>
+      <h4> Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %> </h4>
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Remove</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <% @attendances.each_with_index do | a, i | %>
+          <% @attendances.each_with_index do | attendance, index | %>
           <%# Only display students who have presence marked as true %>
-          <% if a.present == true %>
+          <% if attendance.present == true %>
           <tr>
-            <th scope="row"><%= i += 1 %></th>
-            <td><%= a.student.first_name %></td>
-            <td><%= a.student.last_name %></td>
+            <th scope="row" style="width: 8rem;"><%= index += 1 %></th>
+            <td style="width: 14rem;"><%= attendance.student.first_name %></td>
+            <td style="width: 16rem;"><%= attendance.student.last_name %></td>
             <td>
-              <%= link_to '<i class="fas fa-user-times"></i>'.html_safe, unattend_attendance_path(a[:id]), method: :post %>
+              <%= link_to '<index class="fas fa-user-times"></index>'.html_safe, unattend_attendance_path(attendance[:id]), method: :post %>
             </td>
+            <td><%= link_to 'See conversations', lesson_student_path(@lesson, attendance.student_id) unless attendance.time_trials.empty? %></td>
           </tr>
           <% end %>
           <% end %>
@@ -28,7 +31,7 @@
       </table>
       <div class="row">
         <div class="col-sm-4">
-          <%= link_to "Start lesson", lesson_time_trials_path(@lesson), method: :post, class: "btn-primary" %>
+          <%= button_to "Start lesson", lesson_time_trials_path(@lesson), method: :post, class: "btn-primary" %>
         </div>
       </div>
     </div>

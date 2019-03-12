@@ -1,4 +1,4 @@
-<div class="container">
+<div class="wrapper">
   <h1> Lessons </h1>
   <div class="row schedule">
     <div class="col-xs-2 small">
@@ -44,10 +44,10 @@
       <%= link_to "Continue", lesson_path(l) %>
       <% end %>
     </div>
-  <% end %>
-  <% if teacher_signed_in? %>
+    <% end %>
+    <%#if teacher_signed_in? %>
 
 
- <%#=#link_to "Create Lesson", new_lesson_path, class: "btn btn-primary" %>
-  <%# end %>
-</div>
+    <%#=#link_to "Create Lesson", new_lesson_path, class: "btn btn-primary" %>
+    <%# end %>
+  </div>

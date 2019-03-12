@@ -1,20 +1,32 @@
 <div class="container">
-  <h3>Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %></h3>
-<div class="row">
-  <div class="col-sm-12">
-    <table class="big-table table-striped ">
+  <div class="wrapper">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4> <%= @course.name %> </h4>
+        <h4> Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %> </h4>
+      </div>
+      <div class="col-sm-6">
+        <strong>Goal: <%= @lesson.learning_goal%> for <%= @lesson.time_goal %> seconds </strong>
+          <% if @student.lesson_time_trials(@lesson).empty? %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        Waiting for <%= "#{@student.first_name} #{@student.last_name}" %> to complete conversation
+      </div>
+    </div>
+    <% else %>
+    <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col" colspan="4"><%= @lesson.learning_goal%> for <%= @lesson.time_goal %> seconds </th>
+          <th scope="col" colspan="4"> </th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <%# Only display time trials that the student was involved in %>
-        <%# @time_trials.where(attendance_a OR attendance_b == current_student) %>
-        <% @lesson.student_time_trials(current_student).each_with_index do | trial, index | %>
-        <%# current_student.lesson_time_trials(@lesson).each_with_index do | trial, index | %>
+        <% @student.lesson_time_trials(@lesson).each_with_index do | trial, index | %>
         <tr>
+
           <th scope="row"><%= index += 1 %></th>
           <td><%= trial.attendance_a.student.first_name %> <%= trial.attendance_a.student.last_name %></td>
           <td> and </td>
@@ -23,7 +35,7 @@
           <% if trial.completed %>
           Trial complete
           <% else %>
-            <%= link_to "Join this trial", lesson_time_trial_path(@lesson, trial)%>
+            Trial not complete
           <% end %>
           </td>
           <td>
@@ -48,12 +60,17 @@
               <%# trial.homeworks.find_by(student: current_student) %>
               <%= simple_form_for @homework do |form| %>
                 <%= form.input :comment %>
+                <%= form.input :teacher_feedback %>
                 <%= form.button :submit %>
+            </td>
+            <td>
+              <%=form.input :approved, as: :check_boxes %>
               <% end %>
             </td>
           </tr>
             <% end %>
             <% end %>
+        <% end %>
         <% end %>
       </tbody>
     </table>
@@ -62,6 +79,7 @@
 
       </div>
     </div>
+  </div>
   </div>
 </div>
 

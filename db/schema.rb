@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_091321) do
+ActiveRecord::Schema.define(version: 2019_03_12_034456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_091321) do
   create_table "lessons", force: :cascade do |t|
     t.string "learning_goal"
     t.integer "time_goal"
-    t.datetime "start_time", default: "2019-03-11 01:12:20"
+    t.datetime "start_time", default: Time.now
     t.datetime "end_time"
     t.boolean "completed", default: false
     t.datetime "created_at", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_091321) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "time_trial_id"
+    t.float "seconds"
     t.index ["time_trial_id"], name: "index_mistakes_on_time_trial_id"
   end
 
