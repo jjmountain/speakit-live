@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_03_12_034456) do
   create_table "lessons", force: :cascade do |t|
     t.string "learning_goal"
     t.integer "time_goal"
-    t.datetime "start_time", default: "2019-03-09 08:03:59"
+    t.datetime "start_time", default: Time.now
     t.datetime "end_time"
     t.boolean "completed", default: false
     t.datetime "created_at", null: false
