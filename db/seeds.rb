@@ -337,4 +337,15 @@ Student.create!(
   photo: File.open("./app/assets/images/Student_7.jpg"),
   course_id: course_one.id
 )
+
+Student.create!(
+  first_name: "Ryo",
+  last_name: "Fujiwara",
+  birth_date: Date.new,
+  email: "ryo@fujiwara.com",
+  password: "secret",
+  student_number: "23",
+  photo: File.open("./app/assets/images/Student_7.jpg"),
+  course_id: course_one.id
+)
 # puts '20 attendances created'
