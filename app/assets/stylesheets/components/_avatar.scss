@@ -1,7 +1,13 @@
 .avatar {
-    border-radius: 23%;
-    width: 80px;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
     margin-right: 10px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 
 
