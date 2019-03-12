@@ -1,72 +1,62 @@
 <div class="container">
   <div class="wrapper">
-    <h2><%= @course.name %> </h2>
-    <div class="row schedule">
-      <div class="col-xs-2 small">
-        <h4>Lesson No.</h4>
-      </div>
-      <div class="col-xs-2 small">
-        <h4>Date</h4>
-      </div>
-      <div class="col-xs-2 small">
-        <h4>Learning Goal</h4>
-      </div>
-      <div class="col-xs-2 small">
-        <h4>Status</h4>
-      </div>
-
-    </div>
-      <% @course.lessons.each_with_index do | lesson, index | %>
-      <div class="row schedule_details">
-        <div class="col-xs-2 small">
-          <%= index + 1%>
-        </div>
-        <div class="col-xs-2 small">
-          <%= lesson.start_time.strftime('%D') %>
-        </div>
-        <div class="col-xs-2 small">
-          <%= lesson.learning_goal %>
-        </div>
-        <div class="col-xs-2 small">
-        <% if lesson.completed == true %>
-          <p style="color:#03C651; text-align: left;">Complete</p>
-          <% elsif lesson.completed == false %>
-          <p style="color:#F2994A; text-align: left;">In Progress</p>
-          <% end %>
-        </div>
-        <div class="col-xs-2 small">
-          <% if student_signed_in? && lesson.completed == false%>
-
-
-            <%#= link_to "Join lesson", lesson_attendances_path(lesson.id), method: :post %>
-            <%= simple_form_for [lesson, Attendance.new] do |f| %>
-            <%= f.submit "Join lesson", class: "btn-2" %>
+    <div class="row">
+      <div class="col-sm- col-sm-offset-1">
+        <h2><%= @course.name %> </h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Lesson</th>
+              <th scope="col">Date</th>
+              <th scope="col">Learning Goal</th>
+              <th scope="col">Status</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @course.lessons.each_with_index do | l, i | %>
+            <tr>
+              <th scope="row" style="width:2rem;"><%= i += 1 %></th>
+              <td style="width:10rem;"><%= l.start_time.strftime('%D') %></td>
+              <td style="width:20rem;"><%= l.learning_goal %></td>
+              <% if l.completed == true %>
+              <td style="color:#03C651; text-align: left; width: 10rem;">Complete</td>
+              <% elsif l.completed == false %>
+              <td style="color:#F2994A; text-align: left; width: 10rem;">In Progress</td>
+              <% end %>
+              <% if student_signed_in? && l.completed == false %>
+              <%= simple_form_for [l, Attendance.new] do |f| %>
+              <td style="width: 10rem;"><%= f.submit 'Join Lesson', class: "btn-2" %></td>
+              <% end %>
+              <% elsif current_teacher && l.completed == false %>
+              <td style="width: 10rem;"><%= link_to "Continue", lesson_path(l) %></td>
+              <% else %>
+              <td></td>
+              <% end %>
+            </tr>
             <% end %>
-          <% elsif current_teacher && lesson.completed == false %>
-            <%= link_to "Continue", lesson_path(lesson) %>
+          </tbody>
+        </table>
+        <!-- <br /> -->
+        <%if teacher_signed_in? %>
+        <div class="new_lesson">
+          <h1>Create a New Lesson</h1>
+          <%= simple_form_for([@course, @lesson], wrapper: :inline_form, html: { class: 'new-lesson-form form-inline' }) do |f| %>
+          <div>
+            <p>Goal</p>
+            <%= f.input_field :learning_goal %>
+          </div>
+          <div>
+            <p>Time in Seconds</p>
+            <%= f.input_field :time_goal %>
+          </div>
+          <div>
+            <%= f.submit class: "btn-primary" %>
+          </div>
           <% end %>
         </div>
+        <%end %>
       </div>
-    <% end %>
-    <% if teacher_signed_in? %>
-
-    <% end %>
-    <div class="new_lesson">
-      <h1>Create a New Lesson</h1>
-      <%= simple_form_for([@course, @lesson], wrapper: :inline_form, html: { class: 'new-lesson-form form-inline' }) do |f| %>
-        <div>
-        <p>Goal</p>
-        <%= f.input_field :learning_goal %>
-        </div>
-        <div>
-        <p>Time in Seconds</p>
-        <%= f.input_field :time_goal %>
-        </div>
-        <div>
-        <%= f.submit class: "btn-primary" %>
-        </div>
-      <% end %>
-
     </div>
   </div>
 </div>
