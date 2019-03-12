@@ -37,6 +37,7 @@ class TimeTrialsController < ApplicationController
     @time_trial.update(time_trial_params)
     if @time_trial.audio.url && @time_trial.seconds
       @time_trial.completed = true
+      @time_trial.save
       redirect_to lesson_path(@time_trial.lesson)
     elsif @time_trial.audio.url.nil?
       flash[:alert] = "No audio."
