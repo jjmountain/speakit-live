@@ -30,9 +30,9 @@ Teacher.destroy_all
 puts 'creating teacher'
 
 teacher = Teacher.create!(
-  first_name: "Mike",
-  last_name: "Frantz",
-  email: "mike@lewagon.com",
+  first_name: "James",
+  last_name: "Devereux",
+  email: "james@devereux.com",
   password: "secret"
 )
 
@@ -85,10 +85,10 @@ puts '2 lesson created'
 puts 'creating 20 students'
 
 Student.create!(
-  first_name: "Miyuki",
-  last_name: "Suzuki",
+  first_name: "Mike",
+  last_name: "Frantz",
   birth_date: Date.new,
-  email: "miyuki@suzuki.com",
+  email: "mike@frantz.com",
   password: "secret",
   student_number: "1",
   photo: File.open("./app/assets/images/Student_2.jpg"),

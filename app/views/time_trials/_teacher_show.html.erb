@@ -45,7 +45,7 @@
           <%= button_tag "", style: "display:none;" %>
         <% end %>
 
-        <%= simple_form_for([@time_trial, @mistake], html: { id: 'time-trial-mistake'}, remote: true) do |f| %>
+        <%= simple_form_for([@time_trial, Mistake.new(time_trial_id: params[:id])], html: { id: 'time-trial-mistake'}, remote: true) do |f| %>
           <%= f.hidden_field :category %>
           <%= f.hidden_field :seconds %>
           <%= f.hidden_field :time_trial_id, value: @time_trial.id %>
