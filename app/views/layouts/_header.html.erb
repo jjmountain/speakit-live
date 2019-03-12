@@ -8,10 +8,14 @@
     <div class="navbar-speakit_live-right hidden-xs hidden-sm">
 
     <% if !student_signed_in? && !teacher_signed_in? %>
-        <%= link_to "Teacher Sign In", new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
+        <%= link_to new_teacher_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link" do  %>
+          <%= image_tag 'teacher_icon.png', width: 55 %>
+        <% end %>
       <% end %>
     <% if !student_signed_in? && !teacher_signed_in? %>
-      <%= link_to "Student Sign In", new_student_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link"  %>
+      <%= link_to new_student_session_path, class: "navbar-speakit_live-item navbar-speakit_live-link" do %>
+          <%= image_tag 'student_icon.png', width: 55 %>
+        <% end %>
     <% end %>
     <% if teacher_signed_in? %>
       <%= link_to "Teacher Sign Out", destroy_teacher_session_path, method: :delete %>
