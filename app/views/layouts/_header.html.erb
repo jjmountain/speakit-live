@@ -21,7 +21,9 @@
       <%= link_to "Teacher Sign Out", destroy_teacher_session_path, method: :delete %>
     <% end %>
     <% if student_signed_in? %>
-      <%= link_to "Student Sign Out", destroy_student_session_path, method: :delete %>
+      <%= link_to destroy_student_session_path, method: :delete do %>
+      <%= image_tag current_student.photo_url, class: "avatar", alt: "avatar" %>
+      <% end %>
     <% end %>
     <!-- Profile picture with dropdown list -->
 
