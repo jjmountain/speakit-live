@@ -60,7 +60,7 @@ puts 'creating 2 lessons'
 
 Lesson.create!(
   learning_goal: "Talk about pets",
-  time_goal: 120,
+  time_goal: 30,
   start_time: Time.now,
   end_time: Time.now,
   completed: true,
@@ -71,7 +71,7 @@ Lesson.create!(
 
 Lesson.create!(
   learning_goal: "Talk about hobbies",
-  time_goal: 120,
+  time_goal: 30,
   start_time: Time.now,
   end_time: Time.now,
   completed: false,
@@ -310,6 +310,17 @@ Student.create!(
   course_id: course_one.id
 )
 
+Student.create!(
+  first_name: "Ryo",
+  last_name: "Fujiwara",
+  birth_date: Date.new,
+  email: "ryo@fujiwara.com",
+  password: "secret",
+  student_number: "23",
+  photo: File.open("./app/assets/images/Student_7.jpg"),
+  course_id: course_one.id
+)
+
 puts '20 students created'
 
 puts 'creating 20 attendances'
@@ -338,14 +349,5 @@ Student.create!(
   course_id: course_one.id
 )
 
-Student.create!(
-  first_name: "Ryo",
-  last_name: "Fujiwara",
-  birth_date: Date.new,
-  email: "ryo@fujiwara.com",
-  password: "secret",
-  student_number: "23",
-  photo: File.open("./app/assets/images/Student_7.jpg"),
-  course_id: course_one.id
-)
+
 # puts '20 attendances created'
