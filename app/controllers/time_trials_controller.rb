@@ -26,6 +26,7 @@ class TimeTrialsController < ApplicationController
 
   def show
     @time_trial = TimeTrial.find(params[:id])
+    @mistake = Mistake.new(time_trial_id: params[:id])
   end
 
   def update
@@ -36,6 +37,7 @@ class TimeTrialsController < ApplicationController
     @time_trial.update(time_trial_params)
     if @time_trial.audio.url && @time_trial.seconds
       @time_trial.completed = true
+      @time_trial.save
       redirect_to lesson_path(@time_trial.lesson)
     elsif @time_trial.audio.url.nil?
       flash[:alert] = "No audio."
@@ -52,18 +54,25 @@ class TimeTrialsController < ApplicationController
       render 'time_trials/show'
     end
   end
-    # what does update do here?
-    # should go to next time trial here if there are more time trials
-    # should I create a method to work out remaining time trials?
 
+  def update_seconds
+    @time_trial = TimeTrial.find(params[:id])
+    @time_trial.update(time_trial_params)
+    render body: nil, status: :no_content
+  end
 
-  def completed?(time_trial)
-
+  def reset_trial
+    @time_trial = TimeTrial.find(params[:id])
+    @time_trial.seconds = nil
+    @time_trial.started_at = Time.now
+    @time_trial.mistakes.destroy_all
+    @time_trial.save
+    redirect_to lesson_time_trial_path(@time_trial)
   end
 
   def start
     @time_trial = TimeTrial.find(params[:id])
-    @time_trial.started_at = DateTime.now
+    @time_trial.started_at = Time.now
     @time_trial.save
     render body: nil, status: :no_content
   end
