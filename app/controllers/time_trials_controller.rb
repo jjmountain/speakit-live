@@ -41,10 +41,21 @@ class TimeTrialsController < ApplicationController
       flash[:alert] = "No audio."
       render 'time_trials/show'
     end
+  end
+
+  def update_audio
+    @time_trial = TimeTrial.find(params[:id])
+    if @time_trial.update(time_trial_params)
+      redirect_to lesson_path(@time_trial.lesson)
+    else
+      flash[:alert] = "Audio upload failed"
+      render 'time_trials/show'
+    end
+  end
     # what does update do here?
     # should go to next time trial here if there are more time trials
     # should I create a method to work out remaining time trials?
-  end
+
 
   def completed?(time_trial)
 
