@@ -112,7 +112,23 @@
                   <%= link_to '<index class="fas fa-user-times"></index>'.html_safe, unattend_attendance_path(attendance[:id]), method: :post %>
                 </div>
               </div>
-            <% end %>
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-actions">
+              <% @lesson.student_time_trials(attendance.student).each do |trial| %>
+                <% if trial.completed %>
+                  <%= link_to '<i class="fas fa-comment"></i>'.html_safe, lesson_student_path(@lesson, attendance.student_id) unless attendance.time_trials.empty? %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-check">
+              <%= '<i class="far fa-check-square"></i>'.html_safe %>
+              <%= '<i class="fas fa-times"></i>'.html_safe %>
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-remove">
+              <%= link_to '<index class="fas fa-user-times"></index>'.html_safe, unattend_attendance_path(attendance[:id]), method: :post %>
+            </div>
+          </div>
+          <% end %>
           <% end %>
         </div>
       </div>
