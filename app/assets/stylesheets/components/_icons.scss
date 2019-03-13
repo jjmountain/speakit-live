@@ -1,4 +1,9 @@
 .fa-user-times:before {
-    color: $red;
+    color: $gray;
+    text-decoration: none;
+}
+
+.fa-comment {
+    color: $gray;
     text-decoration: none;
 }

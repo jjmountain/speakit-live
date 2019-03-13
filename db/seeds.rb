@@ -30,6 +30,7 @@ Teacher.destroy_all
 puts 'creating teacher'
 
 teacher = Teacher.create!(
+
   first_name: "James",
   last_name: "Devereux",
   email: "james@devereux.com",
