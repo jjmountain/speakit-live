@@ -65,17 +65,15 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
       Disable the record button until we get a success or fail from getUserMedia()
   */
 
-  recordButton.disabled = true;
-  stopButton.disabled = false;
-  pauseButton.disabled = false
+  // recordButton.disabled = true;
+  // stopButton.disabled = false;
+  // pauseButton.disabled = false
 
   /*
       We're using the standard promise based getUserMedia()
       https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
   */
 
-  navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
-    console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
 
     /*
       create an audio context after getUserMedia is called
@@ -85,17 +83,10 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
     audioContext = new AudioContext();
 
     //update the format
-    document.getElementById("formats").innerHTML="Format: 1 channel pcm @ "+audioContext.sampleRate/1000+"kHz"
+    // document.getElementById("formats").innerHTML="Format: 1 channel pcm @ "+audioContext.sampleRate/1000+"kHz"
 
-  console.log("Recording started");
 
-}).catch(function(err) {
-    //enable the record button if getUserMedia() fails
-    recordButton.disabled = false;
-    stopButton.disabled = true;
-    // pauseButton.disabled = true
-});
-}
+    gumStream = stream;
 
     /* use the stream */
     input = audioContext.createMediaStreamSource(stream);
@@ -105,6 +96,16 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
       Recording 2 channels  will double the file size
     */
     rec = new Recorder(input,{numChannels:1})
+    rec.record()
+    console.log("Recording started");
+
+}).catch(function(err) {
+    //enable the record button if getUserMedia() fails
+    recordButton.disabled = false;
+    stopButton.disabled = true;
+    // pauseButton.disabled = true
+});
+}
 
 function stopRecording() {
   console.log("stopButton clicked");
@@ -146,9 +147,15 @@ function createDownloadLink(blob) {
   button.innerText = 'Submit';
   button.classList.add('btn')
   button.classList.add('btn-primary')
+  button.addEventListener('click', function() {
+    button.style = 'display:none'
+    document.querySelector('#loading-spinner').style = 'display:flex;justify-content:center;'
+  })
   li.appendChild(audioElement);
-  li.appendChild(button);
+  const nextLi = document.createElement('li');
+  nextLi.appendChild(button);
   list.appendChild(li);
+  list.appendChild(nextLi);
 
   button.addEventListener('click', () => {
 

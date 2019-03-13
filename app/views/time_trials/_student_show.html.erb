@@ -57,6 +57,9 @@
     <!-- <h3>Recordings</h3> -->
     <ol id="recordingsList">
     </ol>
+    <div id="loading-spinner" style="justify-content:center;display:none;text-align:center">
+      <i class="fas fa-spinner fa-spin"></i>
+    </div>
     <div style="display:flex;justify-content:center; margin-top:15px">
       <%= button_to lesson_time_trial_path(@time_trial.lesson, @time_trial), method: :get, style: "display:none", id: "restart-recording", data: { confirm: 'Start from beginning?' } do %>
         Start again <i class="fas fa-redo"></i>
