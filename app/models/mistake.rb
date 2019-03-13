@@ -1,5 +1,5 @@
 class Mistake < ApplicationRecord
-  CATEGORIES = ["pronunciation", "grammar", "content", "word choice", "silence", "incorrect answer"]
+  CATEGORIES = ["pronunciation", "grammar", "content", "word choice", "silence"]
   belongs_to :time_trial
   has_many :homeworks, dependent: :destroy
   validates :category, presence: true

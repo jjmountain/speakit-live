@@ -1,21 +1,15 @@
 <div class="row row-eq-height">
-
-
   <div class="col-sm-4 time-trial-columns">
-    <!-- <h3>Students</h3> -->
 
-      <div class="card-student">
+    <div class="card-student">
       <%= image_tag @time_trial.attendance_a.student.photo_url, class: "avatar", alt: "avatar" %>
-      <strong><%= @time_trial.attendance_a.student.first_name %> <%= @time_trial.attendance_a.student.last_name %></strong>
+      <div><%= @time_trial.attendance_a.student.first_name %> <%= @time_trial.attendance_a.student.last_name %></div>
     </div>
     <div class="card-student">
       <%= image_tag @time_trial.attendance_b.student.photo_url, class: "avatar", alt: "avatar" %>
-      <strong><%= @time_trial.attendance_b.student.first_name %> <%= @time_trial.attendance_b.student.last_name %></strong>
+      <%= @time_trial.attendance_b.student.first_name %> <%= @time_trial.attendance_b.student.last_name %>
     </div>
-
   </div>
-
-
   <div class="col-sm-4 time-trial-columns" style="margin-left: 3em;">
     <h1 style="text-align: center;">Lesson Goal</h1>
     <p style="text-align: center;" ><strong><%= @time_trial.lesson.learning_goal %> for <span id="seconds-goal"><%= @time_trial.lesson.time_goal %></span> seconds</strong></p>
@@ -68,22 +62,9 @@
     </div>
 
 </div>
-
-
-<div class="col-sm-4 time-trial-columns" style="justify-content: start; margin-left: 70px;">
-  <h3>Keys</h3>
-      <ul>
-      <li><strong>[ C ]</strong> - content</li>
-      <li><strong>[ G ]</strong> - grammar</li>
-      <li><strong>[ I ]</strong> - incorrect answer</li>
-      <li><strong>[ P ]</strong> - pronounciation</li>
-      <li><strong>[ S ]</strong> - silence</li>
-      <li><strong>[ W ]</strong> - word choice</li>
-      </ul>
+<div class="col-sm-4 time-trial-columns" style="justify-content: start; margin-top: 60px; margin-left: 70px;">
   <div id="card-feedback">
-
     <%= render 'mistakes/index' %>
   </div>
 </div>
 
-</div>
