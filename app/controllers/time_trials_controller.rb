@@ -38,9 +38,10 @@ class TimeTrialsController < ApplicationController
     if @time_trial.audio.url && @time_trial.seconds
       @time_trial.completed = true
       @time_trial.save
+      flash[:notice] = "Audio submitted and conversation round complete"
       redirect_to lesson_path(@time_trial.lesson)
     elsif @time_trial.audio.url.nil?
-      flash[:alert] = "No audio."
+      flash[:alert] = "Please submit Audio."
       render 'time_trials/show'
     end
   end

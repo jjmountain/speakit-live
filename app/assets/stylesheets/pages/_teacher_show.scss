@@ -6,10 +6,14 @@
 
   #chronoExample {
   display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px 0;
-    align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 15px;
+  align-items: center;
+  background-color: $blackboard;
+  border-radius: 5px;
+  color: white;
+  font-weight: lighter;
 }
 
 .time-trial-columns {
@@ -54,4 +58,38 @@
 
 .lesson-attendance-row-avatar {
   item-align: right;
+
+  .startButton {
+  color: white;
+  border: none;
+  background-color: transparent;
+  font-size: 2em;
+  &:focus {
+    border: none !important;
+    outline: none;
+  }
+}
+
+.stopButton {
+  color: white;
+  border: none;
+  background-color: transparent;
+  font-size: 2em;
+  &:focus {
+    border: none !important;
+    outline: none;
+  }
+}
+
+.restartButton {
+  color: $blackboard;
+  border: none;
+  background-color: white;
+}
+
+.timer-action-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 40px;
 }

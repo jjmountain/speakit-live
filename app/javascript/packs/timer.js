@@ -25,6 +25,7 @@ document.querySelector('.startButton').addEventListener('click', function (event
     timer.start({precision: 'secondTenths', startValues: {seconds: defaultTime}, target: {seconds: secondsGoal }});
     document.querySelector('#time-trial-start button').click();
     event.currentTarget.style = 'display:none'
+    document.querySelector('.stopButton').style = 'display:block'
 });
 
 // $('#chronoExample .pauseButton').click(function () {
