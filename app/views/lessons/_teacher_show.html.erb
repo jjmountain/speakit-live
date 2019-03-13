@@ -1,37 +1,69 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-8">
+  <div class="wrapper">
+    <div class="col-sm-lesson-attendance-header">
       <h4> <%= @course.name %> </h4>
       <h4> Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %> </h4>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @attendances.each_with_index do | attendance, index | %>
+      <%= button_to "Start lesson", lesson_time_trials_path(@lesson), method: :post, class: "btn-primary" %>
+    </div>
+    <div class="lesson-attendance-row-item">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="lesson-attendance-row">
+            <div class="lesson-attendance-row-item lesson-attendance-row-avatar">
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-number">
+              <h5>Student Num</h5>
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-name">
+              <div class="lesson-attendance-row-item lesson-attendance-row-first-name">
+                <h5>First</h5>
+              </div>
+              <div class="lesson-attendance-row-item lesson-attendance-row-last-name">
+                <h5>Last</h5>
+              </div>
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-actions">
+              <h5>Conversations</h5>
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-check">
+              <h5>HW Checked</h5>
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-remove">
+              <h5>Absent?</h5>
+            </div>
+          </div>
+          <% @attendances.joins(:student).order('students.last_name ASC').each_with_index do | attendance, index | %>
           <%# Only display students who have presence marked as true %>
           <% if attendance.present == true %>
-          <tr>
-            <th scope="row" style="width: 8rem;"><%= index += 1 %></th>
-            <td style="width: 14rem;"><%= attendance.student.first_name %></td>
-            <td style="width: 16rem;"><%= attendance.student.last_name %></td>
-            <td>
+          <div class="lesson-attendance-row <%= 'even' if index.even? %>">
+            <div class="lesson-attendance-row-item lesson-attendance-row-avatar">
+              <% index += 1 %>
+              <%= image_tag attendance.student.photo_url, class: "avatar", alt: "avatar" %>
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-number">
+              <%= attendance.student.student_number %>
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-name">
+              <div class="lesson-attendance-row-item lesson-attendance-row-first-name">
+                <%= attendance.student.first_name %>
+              </div>
+              <div class="lesson-attendance-row-item lesson-attendance-row-last-name">
+                <%= attendance.student.last_name %>
+              </div>
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-actions">
+              <%= link_to '<i class="fas fa-comment"></i>'.html_safe, lesson_student_path(@lesson, attendance.student_id) unless attendance.time_trials.empty? %>
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-check">
+              <%= '<i class="far fa-check-square"></i>'.html_safe %>
+              <%= '<i class="fas fa-times"></i>'.html_safe.html_safe %>
+            </div>
+            <div class="lesson-attendance-row-item lesson-attendance-row-remove">
               <%= link_to '<index class="fas fa-user-times"></index>'.html_safe, unattend_attendance_path(attendance[:id]), method: :post %>
-            </td>
-            <td><%= link_to 'See conversations', lesson_student_path(@lesson, attendance.student_id) unless attendance.time_trials.empty? %></td>
-          </tr>
+            </div>
+          </div>
           <% end %>
           <% end %>
-        </tbody>
-      </table>
-      <div class="row">
-        <div class="col-sm-4">
-          <%= button_to "Start lesson", lesson_time_trials_path(@lesson), method: :post, class: "btn-primary" %>
         </div>
       </div>
     </div>

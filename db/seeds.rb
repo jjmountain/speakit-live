@@ -33,7 +33,8 @@ teacher = Teacher.create!(
   first_name: "Mike",
   last_name: "Frantz",
   email: "mike@lewagon.com",
-  password: "secret"
+  password: "secret",
+  photo: File.open("./app/assets/images/Student_2.jpg")
 )
 
 puts 'teacher created'
