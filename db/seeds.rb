@@ -99,16 +99,6 @@ Student.create!(
   course_id: course_one.id
 )
 
-Student.create!(
-  first_name: "Ryo",
-  last_name: "Fujiwara",
-  birth_date: Date.new,
-  email: "ryo@gmail.com",
-  password: "secret",
-  student_number: "18EF081",
-  photo: File.open("./app/assets/images/ryo.jpg"),
-  course_id: course_one.id
-)
 
 Student.create!(
   first_name: "Mana",
@@ -153,6 +143,17 @@ Student.create!(
   password: "secret",
   student_number: "18EK007",
   photo: File.open("./app/assets/images/girl2.jpg"),
+  course_id: course_one.id
+)
+
+Student.create!(
+  first_name: "Ryo",
+  last_name: "Fujiwara",
+  birth_date: Date.new,
+  email: "ryo@gmail.com",
+  password: "secret",
+  student_number: "18EF081",
+  photo: File.open("./app/assets/images/ryo.jpg"),
   course_id: course_one.id
 )
 

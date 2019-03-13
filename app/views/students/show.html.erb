@@ -1,7 +1,7 @@
 <div class="container">
-  <h4> <%= @course.name %> </h4>
-  <h4> Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %> </h4>
-  <strong>Goal: <%= @lesson.learning_goal%> for <%= @lesson.time_goal %> seconds </strong>
+  <%= render 'layouts/teacher_wrapper' %>
+  <%= render 'layouts/teacher_course_wrapper' %>
+  <%= render 'layouts/teacher_lesson_wrapper' %>
   <% if @lesson.student_time_trials(@student).empty? %>
     <div class="row">
       <div class="col-sm-6">
