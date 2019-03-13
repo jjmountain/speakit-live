@@ -1,10 +1,10 @@
 
 
 .row-eq-height {
-    display: flex;
-  }
+  display: flex;
+}
 
-  #chronoExample {
+#chronoExample {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -23,14 +23,50 @@
     height: 80vh;
 }
 
-.startButton {
+.lesson-attendance-row {
+  display: flex;
+  justify-content: space-around;
+  vertical-align: center;
+  align-items: center;
+  border-bottom: solid 2px rgba(136, 135, 135, 0.521);
+  & > * {
+    flex: 0 0 18%;
+    text-align: center;
+    padding: 5px 0;
+  }
+}
+
+.even {
+  background-color: $yellow;
+}
+
+.lesson-attendance-row-name {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 0 20%;
+}
+
+.col-sm-lesson-attendance-header {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.lesson-attendance-row-number {
+  text-align: left;
+}
+
+.lesson-attendance-row-avatar {
+  // item-align: right;
+  .startButton {
   color: white;
   border: none;
   background-color: transparent;
   font-size: 2em;
-  &:focus {
-    border: none !important;
-    outline: none;
+    &:focus {
+      border: none !important;
+      outline: none;
+    }
   }
 }
 

@@ -51,34 +51,41 @@ function startRecording(e) {
 navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
   console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
 
+
   /*
-    create an audio context after getUserMedia is called
-    sampleRate might change after getUserMedia is called, like it does on macOS when recording through AirPods
-    the sampleRate defaults to the one set in your OS for your playback device
+    Simple constraints object, for more advanced audio features see
+    https://addpipe.com/blog/audio-constraints-getusermedia/
   */
-  audioContext = new AudioContext();
 
   //update the format
   // document.getElementById("formats").innerHTML="Format: 1 channel pcm @ "+audioContext.sampleRate/1000+"kHz"
 
-  /*  assign to gumStream for later use  */
-  gumStream = stream;
-
-  /* use the stream */
-  input = audioContext.createMediaStreamSource(stream);
 
   /*
-    Create the Recorder object and configure to record mono sound (1 channel)
-    Recording 2 channels  will double the file size
+      Disable the record button until we get a success or fail from getUserMedia()
   */
-  rec = new Recorder(input,{numChannels:1})
 
-  //start the recording process
-  rec.record()
+  recordButton.disabled = true;
+  stopButton.disabled = false;
+  pauseButton.disabled = false
 
-  // My attempt to try and start the timer from the record button
-  // timer.start({ precision: 'secondTenths', target: { seconds: 60 } });
+  /*
+      We're using the standard promise based getUserMedia()
+      https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+  */
 
+  navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+    console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
+
+    /*
+      create an audio context after getUserMedia is called
+      sampleRate might change after getUserMedia is called, like it does on macOS when recording through AirPods
+      the sampleRate defaults to the one set in your OS for your playback device
+    */
+    audioContext = new AudioContext();
+
+    //update the format
+    document.getElementById("formats").innerHTML="Format: 1 channel pcm @ "+audioContext.sampleRate/1000+"kHz"
 
   console.log("Recording started");
 
@@ -90,19 +97,14 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
 });
 }
 
-function pauseRecording(){
-console.log("pauseButton clicked rec.recording=",rec.recording );
-if (rec.recording){
-  //pause
-  rec.stop();
-  pauseButton.innerHTML="Resume";
-}else{
-  //resume
-  rec.record()
-  pauseButton.innerHTML="Pause";
+    /* use the stream */
+    input = audioContext.createMediaStreamSource(stream);
 
-}
-}
+    /*
+      Create the Recorder object and configure to record mono sound (1 channel)
+      Recording 2 channels  will double the file size
+    */
+    rec = new Recorder(input,{numChannels:1})
 
 function stopRecording() {
   console.log("stopButton clicked");
@@ -167,65 +169,5 @@ function createDownloadLink(blob) {
     };
   });
 
-  // console.log(url);
-
-  // formData.set('time_trial[audio]', blob, 'helloworld.wav');
-  // console.log(formData.values());
-  // const fileInput = document.getElementById('time_trial_audio');
-  // blob.lastModifiedDate = new Date();
-  // blob.name = 'hello.wav';
-  // fileInput.value = blob;
-  // fileInput.value = new File(blob, 'hello.wav');
-  // form.submit();
-// var url = URL.createObjectURL(blob);
-// var au = document.createElement('audio');
-// var li = document.createElement('li');
-// var link = document.createElement('a');
-
-// //name of .wav file to use during upload and download (without extendion)
-// var filename = new Date().toISOString();
-
-// //add controls to the <audio> element
-// au.controls = true;
-// au.src = url;
-
-// //save to disk link
-// link.href = url;
-// link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
-// link.innerHTML = "Save to disk";
-
-// //add the new audio element to li
-// li.appendChild(au);
-
-// //add the filename to the li
-// li.appendChild(document.createTextNode(filename+".wav "))
-
-// //add the save to disk link to li
-// li.appendChild(link);
-
-// //upload link
-// var upload = document.createElement('a');
-// upload.href="#";
-// upload.innerHTML = "Upload";
-// upload.addEventListener("click", function(event){
-//   var xhr = new XMLHttpRequest();
-//   xhr.onload=function(e) {
-//       if(this.readyState === 4) {
-//           console.log("Server returned: ",e.target.responseText);
-//       }
-//     };
-//   var fd = new FormData();
-//   fd.append("audio_data", blob, filename);
-//   xhr.open("POST", "http://localhost:3000/lessons/7/time_trials/18", true);
-//   xhr.send(fd);
-//   const form = document.querySelector(".edit_time_trial")
-//   form.querySelector('#time_trial_audio').value = blob
-//   console.log(au.src)
-//   // form.querySelector('#edit-time-trial-btn').click();
-// })
-// li.appendChild(document.createTextNode (" "))//add a space in between
-// li.appendChild(upload)//add the upload link to li
-
-// //add the li element to the ol
-// recordingsList.appendChild(li);
 }
+
