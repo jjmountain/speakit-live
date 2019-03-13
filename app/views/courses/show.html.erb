@@ -1,62 +1,80 @@
 <div class="container">
   <div class="wrapper">
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <h2><%= @course.name %> </h2>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Lesson</th>
-              <th scope="col">Date</th>
-              <th scope="col">Learning Goal</th>
-              <th scope="col">Status</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @course.lessons.each_with_index do | l, i | %>
-            <tr>
-              <th scope="row" style="width:2rem;"><%= i += 1 %></th>
-              <td style="width:10rem;"><%= l.start_time.strftime('%D') %></td>
-              <td style="width:20rem;"><%= l.learning_goal %></td>
+    <div class="col-sm-course-show-header">
+      <h3> <%= @course.name %> </h3>
+      <div class="course-show-row-item row no-margin">
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="course-show-row title-row">
+              <div class="course-show-row-item course-show-row-lesson-number">
+                <h5>Lesson</h5>
+              </div>
+              <div class="course-show-row-item course-show-row-date">
+                <h5>Date</h5>
+              </div>
+              <div class="course-show-row-item course-show-row-learning-goal">
+                <h5>Learning Goal</h5>
+              </div>
+              <div class="course-show-row-item course-show-row-status">
+                <h5>Status</h5>
+              </div>
+              <div class="course-show-row-item course-show-row-action">
+              </div>
+            </div>
+            <% @course.lessons.each_with_index do | l, i| %>
+            <div class="course-show-row <%= 'even' if i.even? %>">
+              <div class="course-show-row-item course-show-row-lesson-number text-left">
+                <%= i += 1 %>
+              </div>
+              <div class="course-show-row-item course-show-row-date">
+                <%= l.start_time.strftime('%A, %b %d, %Y') %>
+              </div>
+              <div class="course-show-row-item course-show-row-learning-goal">
+                <%= l.learning_goal %>
+              </div>
               <% if l.completed == true %>
-              <td style="color:#03C651; text-align: left; width: 10rem;">Complete</td>
+              <div class="course-show-row-item course-show-row-status" style="color:#000000;">Complete</div>
               <% elsif l.completed == false %>
-              <td style="color:#F2994A; text-align: left; width: 10rem;">In Progress</td>
+              <div class="course-show-row-item course-show-row-status" style="color: #EE5F5B;">In Progress</div>
               <% end %>
               <% if student_signed_in? && l.completed == false %>
-              <%= simple_form_for [l, Attendance.new] do |f| %>
-              <td style="width: 10rem;"><%= f.submit 'Join Lesson', class: "btn-2" %></td>
-              <% end %>
+              <div class="course-show-row-item course-show-row-action">
+                <%= simple_form_for [l, Attendance.new] do |f| %>
+                <%= button_tag type: :submit, class: "btn-2" do %>
+                <i class="fas fa-arrow-right"></i>
+                <% end %>
+                <% end %>
+              </div>
               <% elsif current_teacher && l.completed == false %>
-              <td style="width: 10rem;"><%= link_to "Continue", lesson_path(l) %></td>
+              <div class="course-show-row-action"><%= link_to '<i class="fas fa-arrow-right"></i>'.html_safe,
+                lesson_path(l) %></div>
               <% else %>
-              <td></td>
+              <div class="course-show-row-action"></div>
               <% end %>
-            </tr>
+            </div>
             <% end %>
-          </tbody>
-        </table>
-        <!-- <br /> -->
-        <%if teacher_signed_in? %>
-        <div class="new_lesson">
-          <h1>Create a New Lesson</h1>
-          <%= simple_form_for([@course, @lesson], wrapper: :inline_form, html: { class: 'new-lesson-form form-inline' }) do |f| %>
-          <div>
-            <p>Goal</p>
-            <%= f.input_field :learning_goal %>
           </div>
-          <div>
-            <p>Time in Seconds</p>
-            <%= f.input_field :time_goal %>
-          </div>
-          <div>
-            <%= f.submit class: "btn-primary" %>
-          </div>
-          <% end %>
         </div>
-        <%end %>
       </div>
     </div>
+    <%if teacher_signed_in? %>
+    <div class="new_lesson">
+      <h3 class=>Create a New Lesson</h3>
+      <%= simple_form_for([@course, @lesson], wrapper: :inline_form, html: { class: 'new-lesson-form form-inline' }) do |f| %>
+      <div>
+        <p>Goal</p>
+        <%= f.input_field :learning_goal %>
+      </div>
+      <div>
+        <p>Time in Seconds</p>
+        <%= f.input_field :time_goal %>
+      </div>
+      <div>
+        <%= f.submit class: "btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+    <%end %>
   </div>
+</div>
 </div>

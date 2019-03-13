@@ -1,0 +1,43 @@
+.course-show-row {
+    display: flex;
+    justify-content: space-between;
+    // font-size: 12px;
+    vertical-align: center;
+  align-items: center;
+  border-bottom: solid 2px rgba(136, 135, 135, 0.521);
+  padding: 10px;
+    .course-show-row-lesson-number {
+        width: 13%;
+    }
+    .course-show-row-date {
+        width: 25%;
+    }
+    .course-show-row-status {
+        width: 16%;
+    }
+    .course-show-row-action {
+        width: 15%;
+    }
+    .course-show-row-learning-goal {
+        flex-grow: 1;
+    }
+}
+
+.no-margin {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.even {
+    background-color: $yellow;
+  }
+
+.new_lesson {
+    .title {
+        margin-top: 50px;
+    }
+}
+
+// .title-row {
+//     font-weight: bolder;
+// }
