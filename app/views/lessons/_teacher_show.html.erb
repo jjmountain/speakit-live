@@ -1,60 +1,8 @@
 <div class="container">
   <div class="table-wrapper">
-    <div class="teacher-wrapper">
-      <div class="row">
-        <div class="col-xs-2">
-          <%= image_tag current_teacher.photo_url, class: "avatar", alt: "avatar" %>
-        </div>
-        <div class="col-xs-4 name">
-          <h3><%= current_teacher.first_name %> <%= current_teacher.last_name %></h3>
-        </div>
-        <div class="col-xs-4">
-        </div>
-        <div class="col-xs-2">
-        </div>
-      </div>
-    </div>
-    <div class="lesson-wrapper course-wrapper">
-      <div class="row">
-        <div class="col-xs-5">
-          <div class="info">
-            <div class="info-label">Course</div>
-            <p><%= @course.name %></p>
-          </div>
-        </div>
-        <div class="col-xs-4">
-          <div class="info">
-            <div class="info-label">School</div>
-            <p><%= @course.school %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="lesson-wrapper">
-      <div class="row">
-        <div class="col-xs-5">
-          <div class="info">
-            <div class="info-label">Lesson Date</div>
-            <p><%= @lesson.start_time.strftime('%A, %b %d, %Y') %></p>
-          </div>
-          <div class="info">
-            <div class="info-label">Lesson Goal</div>
-            <p><%= @lesson.learning_goal %> for <%= @lesson.time_goal %> seconds</p>
-          </div>
-        </div>
-        <div class="col-xs-4">
-          <div class="info">
-            <div class="info-label">Lesson number</div>
-            <p><%= @course.lessons.count %></p>
-          </div>
-          <div class="info">
-            <div class="info-label">Students Present</div>
-            <%= @attendances.count %> <%= image_tag 'student_icon.png', class: "small-icon" %>
-          </div>
-        </div>
-        <%= button_to "Start lesson", lesson_time_trials_path(@lesson), method: :post, class: "btn-primary" %>
-      </div>
-    </div>
+    <%= render 'layouts/teacher_wrapper' %>
+    <%= render 'layouts/teacher_course_wrapper' %>
+    <%= render 'layouts/teacher_lesson_wrapper' %>
     <div class="row no-margin">
       <div class="col-sm-12">
         <div class="row">

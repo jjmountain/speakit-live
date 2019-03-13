@@ -1,9 +1,10 @@
 <div class="container">
-  <div class="wrapper">
-    <div class="col-sm-course-show-header">
-      <h3> <%= @course.name %> </h3>
+  <div class="table-wrapper">
+    <%= render 'layouts/teacher_wrapper' %>
+    <%= render 'layouts/teacher_course_wrapper' %>
+    <%= render 'layouts/teacher_new_lesson_wrapper' %>
       <div class="course-show-row-item row no-margin">
-        <div class="col-sm-10">
+        <div class="col-sm-12">
           <div class="row">
             <div class="course-show-row title-row">
               <div class="course-show-row-item course-show-row-lesson-number">
@@ -56,26 +57,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <%if teacher_signed_in? %>
-    <div class="new_lesson">
-      <h3 class=>Create a New Lesson</h3>
-      <%= simple_form_for([@course, @lesson], wrapper: :inline_form, html: { class: 'new-lesson-form form-inline' }) do |f| %>
-      <div>
-        <p>Goal</p>
-        <%= f.input_field :learning_goal %>
-      </div>
-      <div>
-        <p>Time in Seconds</p>
-        <%= f.input_field :time_goal %>
-      </div>
-      <div>
-        <%= f.submit class: "btn-primary" %>
-      </div>
-      <% end %>
-    </div>
-    <%end %>
-  </div>
 </div>
 </div>
+</div>
+
 
