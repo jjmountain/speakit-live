@@ -23,6 +23,23 @@
     height: 80vh;
 }
 
+.time-trial-columns-student {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    height: 80vh;
+    background-color:blue;
+}
+
+.time-trial-columns-student {
+  .two_students {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+  }
+}
+
 .lesson-attendance-row {
   display: flex;
   justify-content: space-around;
@@ -84,7 +101,9 @@
 .restartButton {
   color: $blackboard;
   border: none;
-  background-color: white;
+  background-color: #EAEAEA;
+  padding:5px;
+  box-shadow: 1px 1px black;
 }
 
 .timer-action-buttons {
@@ -92,4 +111,42 @@
   justify-content: space-around;
   align-items: center;
   margin-top: 40px;
+}
+
+.time-trial-columns {
+  // background:#f85c52;
+  // border-radius:10px;
+  h1 {
+    // text-decoration: underline;
+    background: #134E5E;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius:5px;
+    color:white;
+  }
+
+  h3 {
+    background: #134E5E;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: black;
+    color:white;
+    padding-left:10px;
+    border-radius:5px;
+  }
+
+  ul {
+    list-style:none;
+    margin-left:0;
+    font-size:0.7em;
+    line-height:1.3em;
+  }
+  ul li {
+    display:inline-block;
+    margin-left:-35px;
+    width:170px;
+    border-bottom: 1px dotted #000;
+    padding-bottom: 2px;
+    // background-color:#fff;
+  }
 }
