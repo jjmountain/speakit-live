@@ -2,8 +2,6 @@
   <div class="wrapper">
   <% if teacher_signed_in? && @lesson.completed == false %>
     <%= render "teacher_show" %>
-  <% elsif teacher_signed_in? && @lesson.completed == true %>
-      <%= render "teacher_show_homework" %>
   <% elsif student_signed_in? %>
      <%= render "student_show" %>
   <% end %>
