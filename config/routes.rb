@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   patch 'time_trials/:id/update_seconds', to: 'time_trials#update_seconds', as: :update_seconds
   patch 'time_trials/:id/', to: 'time_trials#reset_trial', as: :reset_trial
 # old routes
-  resources :lessons, only: [ :index, :show, :update ]  do
+  resources :lessons, only: [ :show, :update ]  do
     resources :attendances, only: [ :create ]
     resources :time_trials, only: [ :create, :show, :update ]
     resources :students, only: [ :show ]
