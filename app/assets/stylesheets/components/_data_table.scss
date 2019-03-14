@@ -56,3 +56,11 @@
 .student-show-row-audio {
   min-width: 300px;
 }
+
+.student-show-row-complete {
+    min-width: 170px;
+    a {
+        color: $gray;
+        text-decoration: none;
+    }
+}

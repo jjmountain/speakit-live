@@ -22,9 +22,9 @@
             </div>
             <div class="student-show-row-item student-show-row-complete">
               <% if trial.completed %>
-                Trial complete
+                Round complete
               <% else %>
-                <%= link_to '<i class="fas fa-arrow-right"></i>'.html_safe, lesson_time_trial_path(@lesson, trial)%>
+                <%= link_to 'Round not complete'.html_safe, lesson_time_trial_path(@lesson, trial)%>
               <% end %>
             </div>
             <div class="student-show-row-item student-show-row-audio">
