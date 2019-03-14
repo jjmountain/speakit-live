@@ -79,9 +79,9 @@
     <%= simple_form_for(@time_trial, as: :time_trial, method: :post, url: time_trial_stop_path, remote: true, html: { id: 'time-trial-stop' }) do |f| %>
       <%= button_tag "", style: "display:none;" %>
     <% end %>
-    <%= button_to reset_trial_path(@time_trial), method: :patch, class: "restartButton" do %>
-      <%= button_tag "", style: "display:none;" %>
-    <% end %>
+    <%#= button_to reset_trial_path(@time_trial), method: :patch, class: "restartButton" do %>
+      <%#= button_tag "", style: "display:none;" %>
+    <%# end %>
   </div>
 </div>
 
