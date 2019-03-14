@@ -4,8 +4,8 @@ class MistakesController < ApplicationController
     @mistake = Mistake.new(mistake_params)
     @time_trial = @mistake.time_trial
     @mistake.seconds = (Time.now - @time_trial.started_at).round(2)
+    flash[:notice] = "Homework submitted"
     @mistake.save
-    # binding.pry
     render 'create.js.erb'
   end
 

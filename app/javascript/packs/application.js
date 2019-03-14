@@ -1,4 +1,8 @@
 import "bootstrap";
+import { homeworkSubmission } from '../components/submit_homeworks'
+// import { homeworkSubmission } from '../components/navbar';
+
+homeworkSubmission();
 
 // CREATING MISTAKES ON TIME TRIAL PAGE
 const logMistake = (event) => {

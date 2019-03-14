@@ -76,18 +76,41 @@
   min-width: 300px;
 }
 
-
-.student-show-row-complete {
-    min-width: 170px;
-    a {
-        color: #32B796;
-        text-decoration: none;
-    }
-}
-
-.mistake-instance {
+.mistake-row {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+}
+
+.mistakes-header {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex: 0 0 25%;
+}
+
+.mistake-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  width: 150px;
+  background-color: $blackboard;
+  border-radius: 10px;
+}
+
+.mistake-info p {
+  color: white;
+  font-size: 17px;
+}
+
+.mistake-student-box {
+  display: flex;
+  flex: 0 0 75%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
 
 }
 
