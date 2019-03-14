@@ -41,3 +41,11 @@
 // .title-row {
 //     font-weight: bolder;
 // }
+
+.student-show-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px;
+        vertical-align: center;
+  align-items: center;
+}
