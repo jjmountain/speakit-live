@@ -49,6 +49,8 @@ class TimeTrialsController < ApplicationController
   def update_audio
     @time_trial = TimeTrial.find(params[:id])
     if @time_trial.update(time_trial_params)
+      # Is this when recording gets saved?
+      @time_trial.broadcast_recording_upload
       redirect_to lesson_path(@time_trial.lesson)
     else
       flash[:alert] = "Audio upload failed"
@@ -65,16 +67,24 @@ class TimeTrialsController < ApplicationController
   def reset_trial
     @time_trial = TimeTrial.find(params[:id])
     @time_trial.seconds = nil
-    @time_trial.started_at = Time.now
+    @time_trial.started_at = nil
     @time_trial.mistakes.destroy_all
     @time_trial.save
+    @time_trial.broadcast_recording_restart
     redirect_to lesson_time_trial_path(@time_trial)
   end
 
-  def start
+  def recording_start
     @time_trial = TimeTrial.find(params[:id])
     @time_trial.started_at = Time.now
     @time_trial.save
+    @time_trial.broadcast_recording_start
+    render body: nil, status: :no_content
+  end
+
+  def recording_stop
+    @time_trial = TimeTrial.find(params[:id])
+    @time_trial.broadcast_recording_stop
     render body: nil, status: :no_content
   end
 

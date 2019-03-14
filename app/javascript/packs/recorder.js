@@ -29,6 +29,8 @@ function beep() {
 
 function startRecording(e) {
   // console.log(e);
+
+  document.querySelector('#time-trial-start button').click();
   e.currentTarget.style = "display:none";
   stopButton.style = "display:block";
   // console.log("recordButton clicked");
@@ -123,7 +125,7 @@ function startRecording(e) {
 
 function stopRecording() {
   console.log("stopButton clicked");
-
+  document.querySelector('#time-trial-stop button').click();
   //disable the stop button, enable the record too allow for new recordings
   stopButton.style = 'display:none';
   document.querySelector('#controls').style = 'display:none';
@@ -193,9 +195,10 @@ function createDownloadLink(blob) {
 }
 
 const finishTimeTrail = () => {
-  beep();
-  stopRecording();
-  console.log('timer finished!');
+  if (document.querySelector('#stopButton').display === "block") {
+    beep();
+    stopRecording();
+  }
 }
 
 
@@ -208,7 +211,7 @@ if (secondsGoalElement) {
 // timer.addEventListener('secondTenthsUpdated', function (e) {
 //   console.log(timer.getTotalTimeValues().seconds)
 //   if (timer.getTotalTimeValues().seconds >= secondsGoal) {
-//     // STOP RECORDING 
+//     // STOP RECORDING
 //     stopRecording();
 //     console.log("stopped recording ho")
 //     console.log(timer.getTotalTimeValues().seconds)
