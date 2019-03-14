@@ -16,7 +16,8 @@
       // silence mistake
     } else if (event.key === "s") {
       submitMistakeForm(2);
-    }
+    } else if (event.key === "i") {
+      submitMistakeForm(2);
   };
 
   document.addEventListener("keyup", logMistake);
