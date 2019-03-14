@@ -1,11 +1,12 @@
+<!-- REMEMBER HOMEWORK  -->
 <div class="container">
-  <div class="wrapper">
+  <div class="table-wrapper">
+    <%= render 'layouts/user_wrapper' %>
+    <%= render 'layouts/user_course_wrapper' %>
     <div class="col-sm-student-show-header">
-      <h3>Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %></h3>
-      <h3><%= @lesson.learning_goal%> for <%= @lesson.time_goal %> seconds</h3>
       <div class="student-show-row-item">
-        <div class="col-sm-10">
-          <div class="row">
+        <div class="row">
+          <div class="col-sm-12">
             <% @lesson.student_time_trials(current_student).each_with_index do | trial, index | %>
             <div class="student-show-row <%= 'even' if index.even? %>">
               <div class="student-show-row-item student-show-row-lesson-number">
@@ -34,9 +35,11 @@
                 <%= audio_tag trial.audio, controls: true %>
                 <% else %>
                 No audio file uploaded
+                <% end %>
               </div>
+              
             </div>
-            <% end %>
+            
             <% end %>
           </div>
         </div>
