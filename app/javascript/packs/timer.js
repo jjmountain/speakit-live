@@ -16,25 +16,25 @@ if (timerForm) {
   const secondsGoal = parseInt(document.querySelector('#seconds-goal').innerHTML, 10)
 
   document.querySelector('.startButton').addEventListener('click', function (event) {
-      const defaultTimeValue = document.querySelector('#time-trial-current-time').value
-      if (defaultTimeValue === "") {
-        defaultTime = 0
-      } else {
-        defaultTime = parseInt(defaultTimeValue, 10)
-      }
-      console.log(defaultTime)
-      timer.start({precision: 'secondTenths', startValues: {seconds: defaultTime}, target: {seconds: secondsGoal }});
-      document.querySelector('#time-trial-start button').click();
-      event.currentTarget.style = 'display:none'
-      document.querySelector('.stopButton').style = 'display:block'
+    const defaultTimeValue = document.querySelector('#time-trial-current-time').value
+    if (defaultTimeValue === "") {
+      defaultTime = 0
+    } else {
+      defaultTime = parseInt(defaultTimeValue, 10)
+    }
+    console.log(defaultTime)
+    timer.start({ precision: 'secondTenths', startValues: { seconds: defaultTime }, target: { seconds: secondsGoal } });
+    document.querySelector('#time-trial-start button').click();
+    event.currentTarget.style = 'display:none'
+    document.querySelector('.stopButton').style = 'display:block'
   });
 
   // $('#chronoExample .pauseButton').click(function () {
   //     timer.pause();
   // });
   $('#chronoExample .stopButton').click(function () {
-      timer.stop();
-      // secondUpdateForm.querySelector('button').click();
+    timer.stop();
+    // secondUpdateForm.querySelector('button').click();
   });
   // $('#chronoExample .resetButton').click(function () {
   //     timer.reset();
@@ -48,13 +48,13 @@ if (timerForm) {
     secondUpdateForm.querySelector('#time_trial_seconds').value = timer.getTotalTimeValues().seconds
   });
   timer.addEventListener('started', function (e) {
-      $('#chronoExample .values').html(timer.getTimeValues().toString());
+    $('#chronoExample .values').html(timer.getTimeValues().toString());
   });
   // timer.addEventListener('reset', function (e) {
   //     $('#chronoExample .values').html(timer.getTimeValues().toString());
   // });
   timer.addEventListener('targetAchieved', function (e) {
-      $('.progress_bar').html('COMPLETE!!');
+    $('.progress_bar').html('COMPLETE!!');
   });
 
 }

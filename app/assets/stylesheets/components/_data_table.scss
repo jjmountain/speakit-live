@@ -23,13 +23,29 @@
     }
 }
 
+.course-index-row {
+    display: flex;
+    justify-content: space-between;
+    // font-size: 12px;
+    vertical-align: center;
+  align-items: center;
+  border-bottom: solid 2px rgba(136, 135, 135, 0.521);
+  padding: 10px;
+  margin: 0;
+  color: black;
+  text-decoration: none;
+  .col-md-1 {
+    text-align: center;
+  }
+}
+
 .no-margin {
     margin-left: 0px;
     margin-right: 0px;
 }
 
 .even {
-    background-color: $yellow;
+    background-color: #ececea;
   }
 
 .new_lesson {
@@ -50,8 +66,11 @@
   align-items: center;
   padding-left: 50px;
   padding-right: 50px;
-  padding-top: 20px;
+  padding-top: 10px;
+  
 }
+
+
 
 .student-show-row-audio {
   min-width: 300px;
@@ -94,3 +113,4 @@
   padding-top: 20px;
 
 }
+
