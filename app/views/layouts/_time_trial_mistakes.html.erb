@@ -1,45 +1,36 @@
-<div class="lesson-wrapper course-wrapper">
-      <% @lesson.student_time_trials(current_student).each_with_index do | trial, index | %>
-        <% if trial.completed %>
-          <div class="row">
-            <div class="col-xs-8">
-              <div class="info">
-                <div class="info-label">Homework</div>
-                <p>Write comments for each of the mistakes in the conversation below.</p>
-              </div>
+<div style="background-color: #F8F8FF;">
+  <% @lesson.student_time_trials(student).each_with_index do | trial, index | %>
+    <% if trial.completed %>
+    <div class="mistakes-header">
+      <div class ="homework-header"><h4>Homework:</h4></div>
+      <div>
+      <p>Listen to your conversation again and think about your mistakes.</p><p>Write a comment for each mistake with a correction of what you should have said.</p>
+      </div>
+    </div>
+      <% trial.mistakes.each_with_index do | mistake, index | %>
+        <div class="mistake-row">
+          <div class="mistake-info">
+            <div class="mistake-category">
+              <h4><%= mistake.category.capitalize %> mistake</h4>
             </div>
-            <div class="col-xs-4">
-              <div class="info">
-                <div class="info-label">Approve all?</div>
-                  <input type="checkbox" id="check-all" style="display: none;"></input><label for="check-all"">Check all?</label>
-                </div>
-            </div>
-          </div>
-            <% trial.mistakes.each_with_index do | mistake, index | %>
-          <div class="row" style="padding-top: 15px;">
-            <div class="col-xs-3">
-              <div class="mistake-instance">
-              <%= mistake.category %> mistake at <%= (mistake.created_at - trial.started_at).round(2) %>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <% @homework = mistake.homeworks.find_by(student: current_student) %>
-              <%= simple_form_for @homework, remote: true do |form| %>
-                  <%= form.input :comment, class: 'comment-box' %>
-                  <%= form.input :teacher_feedback %>
-            </div>
-            <div class="col-xs-2">
-                <%= form.input :approved %>
-                <%= form.button :submit, class: 'submit-homework' %>
-            <% end %>
+            <div class="mistake-time">
+              <p>at <%= (mistake.created_at - trial.started_at).round(2) %> seconds</p>
             </div>
           </div>
+          <div class="mistake-student-box">
+            <% @homework = mistake.homeworks.find_by(student: student) %>
+            <%= simple_form_for @homework, remote: true do |form| %>
+                <%= form.input :comment, class: 'comment-box' %>
+              <%= button_tag "", style: 'display:none' %>
             <% end %>
-        <% end %>
+          </div>
+        </div>
       <% end %>
-    </div>
-    <input type="checkbox" id="submit-all" style="display: none;"></input><label for="submit-all">Submit all homework</label>
-  <div class="row">
-    <div class="col-sm-4">
-    </div>
-  </div>
+      <div class="mistake-row">
+        <%= button_tag "Submit Homework", id: 'homework-submit-all', type: :button, class: 'btn-primary' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+

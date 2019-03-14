@@ -20,8 +20,6 @@
   padding-bottom: 20px;
   border-bottom: solid 2px rgba(100,100,100,0.3);
 
-
-
   .info {
      margin-top: 15px;
     .info-label {
@@ -101,4 +99,12 @@ background: linear-gradient(to top, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ 
 .teacher-wrapper .name {
   color: white;
 
+}
+
+.student-info-lesson {
+  padding-left: 45px;
+}
+
+.student-info-lesson-number {
+  padding-left: 33px;
 }

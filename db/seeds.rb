@@ -35,7 +35,7 @@ teacher = Teacher.create!(
 
   first_name: "James",
   last_name: "Devereux",
-  email: "devereuxjj@gmail.com",
+  email: "james@gmail.com",
   password: "secret",
   photo: File.open("./app/assets/images/teacherpic.jpg")
 )

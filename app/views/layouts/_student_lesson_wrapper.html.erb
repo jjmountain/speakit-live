@@ -1,6 +1,6 @@
 <div class="lesson-wrapper">
       <div class="row">
-        <div class="col-xs-5">
+        <div class="col-xs-5 student-info-lesson">
           <div class="info">
             <div class="info-label">Lesson Date</div>
             <p><%= @lesson.start_time.strftime('%A, %b %d, %Y') %></p>
@@ -10,7 +10,7 @@
             <p><%= @lesson.learning_goal %> for <%= @lesson.time_goal %> seconds</p>
           </div>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-4 student-info-lesson-number">
           <div class="info">
             <div class="info-label">Lesson number</div>
             <p><%= @course.lessons.count %></p>
@@ -30,11 +30,5 @@
               <% end %></p>
           </div>
         </div>
-        <div class="col-xs-3">
-        <%= button_to "Start lesson", lesson_time_trials_path(@lesson), method: :post, class: "btn-primary" %>
-        </div>
       </div>
     </div>
-    
-
-

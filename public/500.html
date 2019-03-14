@@ -4,12 +4,29 @@
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
+
   .rails-default-error-page {
-    background-color: #EFEFEF;
+    background-color: #2C424B;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
     margin: 0;
+  }
+
+  button {
+  padding:15px 20px;
+  border-radius:10px;
+  font-size:16px;
+  font-weight:thin;
+  background-color:#F84E44;
+  color:white;
+  }
+
+  button:hover {
+  background-color:white;
+  color:#F84E44;
+  cursor:pointer;
+
   }
 
   .rails-default-error-page div.dialog {
@@ -20,20 +37,17 @@
 
   .rails-default-error-page div.dialog > div {
     border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
+
+    border: #F84E44 solid 4px;
+    border-radius:10px;
     background-color: white;
-    padding: 7px 12% 0;
+    padding: 7px 12% 20px;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
 
   .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
+    font-size: 150%;
+    color: black;
     line-height: 1.5em;
   }
 
@@ -56,11 +70,24 @@
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+    <div class="dialog">
+      <div>
+        <h1>Something went wrong!<br>Internal Server Error!</h1>
+        <img src="/images/book_1.png" width="100">
+        <div class="go_back_button">
+        <button onclick="goBack()">Go Back to Previous Page</button>
+        </div>
+        <p>There was an error! Please try again later.  </p>
+        <br>
+
+      </div>
+
+
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+      <script type="text/javascript">
+      function goBack() {
+      window.history.back();
+      }
+</script>
 </body>
 </html>

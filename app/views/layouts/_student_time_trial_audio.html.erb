@@ -1,7 +1,7 @@
 <div class="row">
       <div class="col-xs-12">
         <% @lesson.student_time_trials(student).each_with_index do | trial, index | %>
-          <div class="student-show-row <%= 'even' if index.even? %>">
+          <div class="student-show-row <%= 'even' if index.even?  %>">
             <div class="student-show-row-item student-show-row-lesson-number">
               <%= index += 1 %>
             </div>
@@ -18,9 +18,9 @@
             </div>
             <div class="student-show-row-item student-show-row-complete">
               <% if trial.completed %>
-                Trial complete
+                Round complete
               <% else %>
-                <%= link_to '<i class="fas fa-arrow-right"></i>'.html_safe, lesson_time_trial_path(@lesson, trial)%>
+                <%= link_to 'Continue round'.html_safe, lesson_time_trial_path(@lesson, trial)%>
               <% end %>
             </div>
             <div class="student-show-row-item student-show-row-audio">
