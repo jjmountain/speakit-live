@@ -1,9 +1,20 @@
 <div class="container">
-  <%= render 'layouts/user_wrapper' %>
-  <%= render 'layouts/user_course_wrapper' %>
-  <%= render 'layouts/teacher_lesson_wrapper' %>
-  <%= render 'layouts/student_time_trial_audio', student: @student %>
-  <%= render 'layouts/time_trial_mistakes', student: @student %>
+  <div class="table-wrapper">
+    <%= render 'layouts/user_wrapper' %>
+    <%= render 'layouts/user_course_wrapper' %>
+    <%= render 'layouts/teacher_lesson_wrapper' %>
+    <div class="mistakes-header">
+      <div class ="homework-header"><h4>Homework:</h4></div>
+        <div>
+          <p>Listen to your conversation again and think about your mistakes.</p><p>Write a comment for each mistake with a correction of what you should have said.</p>
+        </div>
+      </div>
+    <%= render 'layouts/student_time_trial_audio', student: @student %>
+    <%= render 'layouts/time_trial_mistakes', student: @student %>
+  </div>
+  <div class="table-wrapper-footer">
+    <%= button_tag "Submit Homework", id: 'homework-submit-all', type: :button, class: 'btn-primary' %>
+  </div>
 </div>
 
 <script>

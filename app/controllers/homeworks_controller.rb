@@ -13,7 +13,7 @@ class HomeworksController < ApplicationController
   private
 
   def homework_params
-    params.require(:homework).permit( :comment, :student_id, :mistake_id, :approved, :teacher_feedback)
+    params.require(:homework).permit( :comment, :student_id, :mistake_id, :approved, :teacher_feedback, :completed)
   end
 
 end
