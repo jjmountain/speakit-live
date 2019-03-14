@@ -91,6 +91,7 @@
       App.cable.subscriptions.create(
         { channel: 'TimeTrialsChannel', time_trial_id: <%= @time_trial.id %> },
         { received: (data) => {
+          console.log(data)
           if (data.recording_restarted === true) {
             location.reload();
           }
