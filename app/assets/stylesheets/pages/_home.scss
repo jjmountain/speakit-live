@@ -19,28 +19,40 @@
       font-weight:bold;
       // margin-top:20px;
       margin-bottom:30px;
+      font-size:40px;
     }
     p {
       margin-top:20px;
       padding-left:20px;
+      vertical-align: middle;
+      font-size:22px;
     }
+
     h3 {
       padding-left:30px;
       font-style: italic;
+      font-weight:bold;
       margin-top:50px;
-      font-size:50px;
+      font-size:40px;
+      vertical-align: middle;
       // text-decoration: overline;
       // margin-top:20px;
     }
     h3 a {
       color:#fff;
+      text-decoration:none;
+    }
+
+    h3 a:hover {
+      color:orange;
     }
   }
-.container {
+.container1 {
   h2.landing_page {
     text-align: center;
     font-family: 'ClearSansLightRegular';
     font-weight: bold;
+    text-decoration:underline;
   }
 }
 

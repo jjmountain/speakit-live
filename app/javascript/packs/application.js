@@ -22,6 +22,8 @@ const logMistake = (event) => {
     // silence mistake
   } else if (event.key === "s") {
     submitMistakeForm('silence');
+  } else if (event.key === "i") {
+    submitMistakeForm('incorrect answer');
   }
 };
 
