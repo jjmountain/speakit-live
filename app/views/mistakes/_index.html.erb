@@ -2,8 +2,8 @@
 <table>
   <% @time_trial.mistakes.each do | mistake | %>
   <tr>
-    <td><%= mistake.seconds %></td>
-    <td><%= mistake.category %></td>
+    <td class="td-left" style="width: 8rem; padding-right: 0px;"><%= mistake.seconds.round %> sec</td>
+    <td><strong><%= mistake.category %></strong></td>
   </tr>
 <% end %>
 </table>
