@@ -1,45 +1,41 @@
 <div class="container">
-  <div class="wrapper">
-    <div class="col-sm-student-show-header">
-      <h3>Lesson on <%= @lesson.start_time.strftime('%A, %b %d') %></h3>
-      <h3><%= @lesson.learning_goal%> for <%= @lesson.time_goal %> seconds</h3>
-      <div class="student-show-row-item">
-        <div class="col-sm-10">
-          <div class="row">
-            <% @lesson.student_time_trials(current_student).each_with_index do | trial, index | %>
-            <div class="student-show-row <%= 'even' if index.even? %>">
-              <div class="student-show-row-item student-show-row-lesson-number">
-                <%= index += 1 %>
-              </div>
-              <div class="student-show-row-item student-show-row-name">
-                <%= image_tag trial.attendance_a.student.photo_url, class: "avatar", alt: "avatar" %>
-                <%= trial.attendance_a.student.first_name %> <%= trial.attendance_a.student.last_name %>
-              </div>
-              <div class="student-show-row-item student-show-row-and">
-                and
-              </div>
-              <div class="student-show-row-item student-show-row-name">
-                <%= image_tag trial.attendance_b.student.photo_url, class: "avatar", alt: "avatar" %>
-                <%= trial.attendance_b.student.first_name %> <%= trial.attendance_b.student.last_name %>
-              </div>
-              <div class="student-show-row-item student-show-row-complete">
-                <% if trial.completed %>
-                Trial complete
-                <% else %>
-                <%= link_to '<i class="fas fa-arrow-right"></i>'.html_safe, lesson_time_trial_path(@lesson, trial)%>
-              </div>
-              <% end %>
-              <div class="student-show-row-item student-show-row-audio">
-                <% if trial.audio.file %>
-                <%= audio_tag trial.audio, controls: true %>
-                <% else %>
-                No audio file uploaded
-              </div>
+  <div class="table-wrapper">
+    <%= render 'layouts/user_wrapper' %>
+    <%= render 'layouts/user_course_wrapper' %>
+    <div class="row">
+      <div class="col-xs-12">
+        <% @lesson.student_time_trials(current_student).each_with_index do | trial, index | %>
+          <div class="student-show-row <%= 'even' if index.even? %>">
+            <div class="student-show-row-item student-show-row-lesson-number">
+              <%= index += 1 %>
             </div>
-            <% end %>
-            <% end %>
+            <div class="student-show-row-item student-show-row-name">
+              <%= image_tag trial.attendance_a.student.photo_url, class: "avatar", alt: "avatar" %>
+              <%= trial.attendance_a.student.first_name %> <%= trial.attendance_a.student.last_name %>
+            </div>
+            <div class="student-show-row-item student-show-row-and">
+              and
+            </div>
+            <div class="student-show-row-item student-show-row-name">
+              <%= image_tag trial.attendance_b.student.photo_url, class: "avatar", alt: "avatar" %>
+              <%= trial.attendance_b.student.first_name %> <%= trial.attendance_b.student.last_name %>
+            </div>
+            <div class="student-show-row-item student-show-row-complete">
+              <% if trial.completed %>
+                Trial complete
+              <% else %>
+                <%= link_to '<i class="fas fa-arrow-right"></i>'.html_safe, lesson_time_trial_path(@lesson, trial)%>
+              <% end %>
+            </div>
+            <div class="student-show-row-item student-show-row-audio">
+              <% if trial.audio.file %>
+                <%= audio_tag trial.audio, controls: true %>
+              <% else %>
+                No audio file uploaded
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

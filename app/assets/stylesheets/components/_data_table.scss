@@ -43,9 +43,13 @@
 // }
 
 .student-show-row {
-        display: flex;
-        justify-content: space-between;
-        padding: 6px;
-        vertical-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px;
+  vertical-align: center;
   align-items: center;
+}
+
+.student-show-row-audio {
+  min-width: 300px;
 }
