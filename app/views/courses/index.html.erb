@@ -20,6 +20,7 @@
       </div>
 
     <% @courses.each_with_index do | course, i | %>
+      <%= link_to course_path(course) do %>
         <div class="course-index-row row <%= 'even' if i.even? %>">
           <div class="col-md-1 course-index-item">
             <%= i += 1 %>
@@ -28,14 +29,13 @@
             <%= course.school %>
           </div>
           <div class="col-md-4 course-index-item course-index-course-name">
-            <%= link_to course_path(course) do %>
-              <%= course.name %>
-            <% end %>
+            <%= course.name %>
           </div>
           <div class="col-md-4 course-index-item course-index-course-description">
             <%= course.description %>
           </div>
         </div>
+        <% end %>
     <% end %>
     </div>
     </div>
