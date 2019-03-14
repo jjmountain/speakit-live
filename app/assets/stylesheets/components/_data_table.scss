@@ -29,7 +29,7 @@
 }
 
 .even {
-    background-color: $yellow;
+    background-color: #ececea;
   }
 
 .new_lesson {
@@ -50,8 +50,11 @@
   align-items: center;
   padding-left: 50px;
   padding-right: 50px;
-  padding-top: 20px;
+  padding-top: 10px;
+  
 }
+
+
 
 .student-show-row-audio {
   min-width: 300px;
@@ -61,7 +64,7 @@
 .student-show-row-complete {
     min-width: 170px;
     a {
-        color: $gray;
+        color: #32B796;
         text-decoration: none;
     }
 }
