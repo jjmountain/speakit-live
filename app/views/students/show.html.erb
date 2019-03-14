@@ -2,78 +2,8 @@
   <%= render 'layouts/user_wrapper' %>
   <%= render 'layouts/user_course_wrapper' %>
   <%= render 'layouts/teacher_lesson_wrapper' %>
-  <% if @lesson.student_time_trials(@student).empty? %>
-    <div class="row">
-      <div class="col-sm-6">
-        Waiting for <%= "#{@student.first_name} #{@student.last_name}" %> to complete first conversation
-      </div>
-    </div>
-  <% else %>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col" colspan="4"> </th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @lesson.student_time_trials(@student).each_with_index do | trial, index | %>
-          <tr>
-            <th scope="row"><%= index += 1 %></th>
-            <td><%= trial.attendance_a.student.first_name %> <%= trial.attendance_a.student.last_name %></td>
-            <td> and </td>
-            <td><%= trial.attendance_b.student.first_name %>  <%= trial.attendance_b.student.last_name %></td>
-            <td>
-              <% if trial.completed %>
-                Trial complete
-              <% else %>
-                Trial not complete
-              <% end %>
-            </td>
-            <td>
-              <% if trial.audio.file %>
-                <%= audio_tag trial.audio, controls: true %>
-              <% else %>
-                No audio file uploaded
-              <% end %>
-            </td>
-          </tr>
-          <% if trial.completed %>
-            <tr>
-              <td colspan="6"><strong>Homework:</strong><p>Write comments for each of the mistakes in the conversation below.</p></td>
-              <td colspan="2"><input type="checkbox" id="check-all" style="display: none;"></input><label for="check-all"">Check all?</label></td>
-            </tr>
-            <% trial.mistakes.each_with_index do | mistake, index | %>
-              <tr>
-                <td colspan="3">
-                  <%= mistake.category %> mistake at <%= (mistake.created_at - trial.started_at).round(2) %>
-                </td>
-                <% @homework = mistake.homeworks.find_by(student: @student) %>
-                <%# trial.homeworks.find_by(student: current_student) %>
-                <td colspan="3">
-                <%= simple_form_for @homework, remote: true do |form| %>
-
-                    <%= form.input :comment %>
-                    <%= form.input :teacher_feedback %>
-                    <%= form.input :approved %>
-                    <%= form.button :submit, class: 'submit-homework' %>
-                <% end %>
-                </td>
-              </tr>
-            <% end %>
-            <tr>
-              <td colspan="2">
-                <input type="checkbox" id="submit-all" style="display: none;"></input><label for="submit-all">Submit all homework</label>
-              </td>
-            </tr>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
-  <div class="row">
-    <div class="col-sm-4"></div>
-  </div>
+  <%= render 'layouts/student_time_trial_audio', student: @student %>
+  <%= render 'layouts/time_trial_mistakes' %>
 </div>
 
 <script>

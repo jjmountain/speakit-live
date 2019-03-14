@@ -55,7 +55,7 @@
                   <%= link_to '<i class="fas fa-comment"></i>'.html_safe, lesson_student_path(@lesson, attendance.student_id) unless attendance.time_trials.empty? %>
                 </div>
                 <div class="lesson-attendance-row-item lesson-attendance-row-check">
-                  <%= '<i class="far fa-check-square"></i>'.html_safe %>
+                  <%#= '<i class="far fa-check-square"></i>'.html_safe %>
                   <%= '<i class="fas fa-times"></i>'.html_safe.html_safe %>
                 </div>
                 <div class="lesson-attendance-row-item lesson-attendance-row-remove">
