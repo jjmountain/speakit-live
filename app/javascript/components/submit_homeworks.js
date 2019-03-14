@@ -6,6 +6,7 @@ const homeworkSubmission = () => {
     homeworkSubmit.addEventListener('click', function() {
       document.querySelectorAll('.edit_homework').forEach((form) => {
         form.querySelector('button').click()
+        console.log(form);
       })
     })
   }
