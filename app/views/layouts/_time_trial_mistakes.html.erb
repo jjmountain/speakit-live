@@ -1,0 +1,45 @@
+<div class="lesson-wrapper course-wrapper">
+      <% @lesson.student_time_trials(current_student).each_with_index do | trial, index | %>
+        <% if trial.completed %>
+          <div class="row">
+            <div class="col-xs-8">
+              <div class="info">
+                <div class="info-label">Homework</div>
+                <p>Write comments for each of the mistakes in the conversation below.</p>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="info">
+                <div class="info-label">Approve all?</div>
+                  <input type="checkbox" id="check-all" style="display: none;"></input><label for="check-all"">Check all?</label>
+                </div>
+            </div>
+          </div>
+            <% trial.mistakes.each_with_index do | mistake, index | %>
+          <div class="row" style="padding-top: 15px;">
+            <div class="col-xs-3">
+              <div class="mistake-instance">
+              <%= mistake.category %> mistake at <%= (mistake.created_at - trial.started_at).round(2) %>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <% @homework = mistake.homeworks.find_by(student: current_student) %>
+              <%= simple_form_for @homework, remote: true do |form| %>
+                  <%= form.input :comment, class: 'comment-box' %>
+                  <%= form.input :teacher_feedback %>
+            </div>
+            <div class="col-xs-2">
+                <%= form.input :approved %>
+                <%= form.button :submit, class: 'submit-homework' %>
+            <% end %>
+            </div>
+          </div>
+            <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <input type="checkbox" id="submit-all" style="display: none;"></input><label for="submit-all">Submit all homework</label>
+  <div class="row">
+    <div class="col-sm-4">
+    </div>
+  </div>
