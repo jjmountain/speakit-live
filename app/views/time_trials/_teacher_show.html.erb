@@ -56,16 +56,14 @@
 
     </div>
     <div class="forms-for-js-trigger">
+      <!-- TODO: Is this needed anymore? -->
       <%= simple_form_for([@time_trial.lesson, @time_trial], method: :patch, url: update_seconds_path(@time_trial), html: { id: 'time-trial-update-seconds'}) do |f| %>
         <%= f.hidden_field :seconds %>
         <%= button_tag "", style: "display:none;" %>
       <% end %>
 
       <%#= simple_form_for(@time_trial, html: { id: 'time-trial-start', url: time_trial_start_path, remote: true, method: :post }) do |f| %>
-      <%= simple_form_for(@time_trial, as: :time_trial, method: :post, url: time_trial_start_path, remote: true, html: { id: 'time-trial-start' }) do |f| %>
 
-        <%= button_tag "", style: "display:none;" %>
-      <% end %>
 
       <%= simple_form_for([@time_trial, Mistake.new(time_trial_id: params[:id])], html: { id: 'time-trial-mistake'}, remote: true) do |f| %>
         <%= f.hidden_field :category %>
@@ -91,3 +89,24 @@
     <%= render 'mistakes/index' %>
   </div>
 </div>
+
+<% content_for :after_js do %>
+  <script>
+    App['time_trial_<%= @time_trial.id %>'] =
+      App.cable.subscriptions.create(
+        { channel: 'TimeTrialsChannel', time_trial_id: <%= @time_trial.id %> },
+        { received: (data) => {
+          console.log(data)
+          if (data.recording_started === true) {
+            document.querySelector('.startButton').click();
+          } else if (data.recording_stopped === true) {
+            document.querySelector('.stopButton').click();
+          } else if (data.recording_finished === true) {
+            // TODO: Do something here! Show the audio??
+          } else if (data.recording_restarted === true) {
+            location.reload();
+          }
+        }}
+    )
+  </script>
+<% end %>

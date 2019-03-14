@@ -22,9 +22,10 @@ if (timerForm) {
     } else {
       defaultTime = parseInt(defaultTimeValue, 10)
     }
-    console.log(defaultTime)
+    console.log('clicked')
     timer.start({ precision: 'secondTenths', startValues: { seconds: defaultTime }, target: { seconds: secondsGoal } });
-    document.querySelector('#time-trial-start button').click();
+    // TODO: Does this form need submitted anymore?
+    // document.querySelector('#time-trial-start button').click();
     event.currentTarget.style = 'display:none'
     document.querySelector('.stopButton').style = 'display:block'
   });
@@ -41,11 +42,13 @@ if (timerForm) {
   // });
   timer.addEventListener('secondTenthsUpdated', function (e) {
     // 1. get the seconds input (by id?)
-    document.querySelector('.values')
+    // document.querySelector('.values') - not doing anything
     // 2. set the seconds input value to current seconds ellapsed
     $('#chronoExample .values').html(timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']));
-    timerForm.querySelector('#time_trial_seconds').value = timer.getTotalTimeValues().seconds
-    secondUpdateForm.querySelector('#time_trial_seconds').value = timer.getTotalTimeValues().seconds
+    // TODO: This next line gets updated when the recording is submitted, right?
+    // timerForm.querySelector('#time_trial_seconds').value = timer.getTotalTimeValues().seconds
+    // TODO: What was this line doing?
+    // secondUpdateForm.querySelector('#time_trial_seconds').value = timer.getTotalTimeValues().seconds
   });
   timer.addEventListener('started', function (e) {
     $('#chronoExample .values').html(timer.getTimeValues().toString());

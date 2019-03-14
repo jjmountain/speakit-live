@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => "/cable"
   devise_for :teachers
   devise_for :students
   root to: 'pages#home'
@@ -8,7 +9,8 @@ Rails.application.routes.draw do
   resources :courses, only: [ :index, :show, :new, :create, :update ]  do
     resources :lessons, only: [ :new, :create ]
   end
-  post 'time_trials/:id/start', to: 'time_trials#start', as: :time_trial_start
+  post 'time_trials/:id/start', to: 'time_trials#recording_start', as: :time_trial_start
+  post 'time_trials/:id/stop', to: 'time_trials#recording_stop', as: :time_trial_stop
   patch 'time_trials/:id/update_audio', to: 'time_trials#update_audio', as: :update_audio
   patch 'time_trials/:id/update_seconds', to: 'time_trials#update_seconds', as: :update_seconds
   patch 'time_trials/:id/', to: 'time_trials#reset_trial', as: :reset_trial
