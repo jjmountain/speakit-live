@@ -1,19 +1,20 @@
-<div class="lesson-wrapper course-wrapper">
+<div style="background-color: #F8F8FF;">
   <% @lesson.student_time_trials(student).each_with_index do | trial, index | %>
     <% if trial.completed %>
     <div class="mistakes-header">
+      <div class ="homework-header"><h4>Homework:</h4></div>
+      <div>
+      <p>Listen to your conversation again and think about your mistakes.</p><p>Write a comment for each mistake with a correction of what you should have said.</p>
+      </div>
     </div>
       <% trial.mistakes.each_with_index do | mistake, index | %>
         <div class="mistake-row">
           <div class="mistake-info">
-            <div class="mistake-number">
-              <p><%= index += 1%></p>
-            </div>
             <div class="mistake-category">
-              <p><%= mistake.category %></p>
+              <h4><%= mistake.category.capitalize %> mistake</h4>
             </div>
             <div class="mistake-time">
-              <p><%= (mistake.created_at - trial.started_at).round(2) %> seconds</p>
+              <p>at <%= (mistake.created_at - trial.started_at).round(2) %> seconds</p>
             </div>
           </div>
           <div class="mistake-student-box">
@@ -25,7 +26,9 @@
           </div>
         </div>
       <% end %>
-      <%= button_tag "Submit Homework", id: 'homework-submit-all', type: :button %>
+      <div class="mistake-row">
+        <%= button_tag "Submit Homework", id: 'homework-submit-all', type: :button, class: 'btn-primary' %>
+      </div>
     <% end %>
   <% end %>
 </div>
