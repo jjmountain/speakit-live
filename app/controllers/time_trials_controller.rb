@@ -31,17 +31,14 @@ class TimeTrialsController < ApplicationController
 
   def update
     @time_trial = TimeTrial.find(params[:id])
-    # if no time trial audio is present
-    # pop up javascript alert asking the user if they are sure they want to proceed
-    # if audio is present then
     @time_trial.update(time_trial_params)
+    @time_trial.reload
     if @time_trial.audio.url && @time_trial.seconds
       @time_trial.completed = true
       @time_trial.save
       flash[:notice] = "Audio submitted and conversation round complete"
       redirect_to lesson_path(@time_trial.lesson)
-    elsif @time_trial.audio.url.nil?
-      flash[:alert] = "Please submit Audio."
+    else
       render 'time_trials/show'
     end
   end

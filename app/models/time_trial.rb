@@ -14,7 +14,8 @@ class TimeTrial < ApplicationRecord
   end
 
   def broadcast_recording_upload
-    ActionCable.server.broadcast("time_trial_#{id}", recording_finished: true)
+    self.reload
+    ActionCable.server.broadcast("time_trial_#{id}", recording_finished: true, audio_url: audio.url)
   end
 
   def broadcast_recording_restart

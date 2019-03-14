@@ -102,7 +102,10 @@
           } else if (data.recording_stopped === true) {
             document.querySelector('.stopButton').click();
           } else if (data.recording_finished === true) {
-            // TODO: Do something here! Show the audio??
+            const audioElement = new Audio(data.audio_url)
+            audioElement.controls = true;
+            document.querySelector('.stopButton').insertAdjacentElement('afterend', audioElement)
+            document.querySelector('.stopButton').innerHTML = ""
           } else if (data.recording_restarted === true) {
             location.reload();
           }
