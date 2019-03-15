@@ -20,7 +20,7 @@
               <% if trial.completed %>
                 Round complete
               <% else %>
-                <%= link_to 'Continue round'.html_safe, lesson_time_trial_path(@lesson, trial)%>
+                <%= link_to 'Start round'.html_safe, lesson_time_trial_path(@lesson, trial)%>
               <% end %>
             </div>
             <div class="student-show-row-item student-show-row-audio">

@@ -1,6 +1,6 @@
 <div class="lesson-wrapper">
       <div class="row">
-        <div class="col-xs-5">
+        <div class="col-xs-5 student-info-lesson">
           <div class="info">
             <div class="info-label">Lesson Date</div>
             <p><%= @lesson.start_time.strftime('%A, %b %d, %Y') %></p>
@@ -10,7 +10,7 @@
             <p><%= @lesson.learning_goal %> for <%= @lesson.time_goal %> seconds</p>
           </div>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-4 student-info-lesson-number">
           <div class="info">
             <div class="info-label">Lesson number</div>
             <p><%= @course.lessons.count %></p>
@@ -24,7 +24,7 @@
           <div class="info">
             <div class="info-label">Lesson status</div>
             <p><% if @lesson.completed == true %>
-              <div class="course-show-row-item course-show-row-status" style="color:#000000;">Complete</div>
+              <div class="course-show-row-item course-show-row-status" style="color:#32B796;">Complete</div>
               <% elsif @lesson.completed == false %>
               <div class="course-show-row-item course-show-row-status" style="color: #EE5F5B;">In Progress</div>
               <% end %></p>
