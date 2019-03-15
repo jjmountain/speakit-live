@@ -7,7 +7,7 @@
     <%= render 'layouts/student_time_trial_audio', student: current_student %>
     <%= render 'layouts/time_trial_mistakes', student: current_student %>
   </div>
-  <% if @lesson.student_time_trials(current_student).first.try(:completed) %>
+  <% if @lesson.student_time_trials(current_student).try(:first).try(:completed) %>
   <div class="table-wrapper-footer">
     <%= button_tag "Submit Homework", id: 'homework-submit-all', type: :button, class: 'btn-primary' %>
   </div>
