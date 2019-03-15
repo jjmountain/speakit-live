@@ -63,10 +63,10 @@ puts 'courses created!'
 puts 'creating 2 lessons'
 
 Lesson.create!(
-  learning_goal: "Talk about pets",
+  learning_goal: "Talk about your hometown",
   time_goal: 30,
-  start_time: Time.now,
-  end_time: Time.now,
+  start_time: DateTime.new(2019,3,8,11,5,6,'+03:00'),
+  end_time: DateTime.new(2019,3,8,4,12,6,'+03:00'),
   completed: true,
   # teacher_id: 1
   teacher: Teacher.all.sample,
@@ -163,11 +163,11 @@ puts '6 students created'
 puts 'creating 6 attendances'
 
 
-Student.find_each do |student|
-  attendance = Attendance.create!(
-  student: student,
-  lesson: Lesson.first)
-end
+# Student.find_each do |student|
+#   attendance = Attendance.create!(
+#   student: student,
+#   lesson: Lesson.first)
+# end
 
 Student.find_each do |student|
   attendance = Attendance.create!(
